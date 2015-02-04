@@ -11,7 +11,7 @@ public class TurbineActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_turbine);
+        setContentView(R.layout.timeline_view);
     }
 
 
