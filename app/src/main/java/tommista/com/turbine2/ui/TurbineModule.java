@@ -16,7 +16,7 @@ import tommista.com.turbine2.TurbineApp;
         includes = {
         },
         injects = {
-                TurbineApp.class, TurbineActivity.class
+                TurbineApp.class, TurbineActivity.class, TimelineView.class
         },
         complete = false,
         library = true
