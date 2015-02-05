@@ -37,4 +37,8 @@ public class TurbineModule {
         return AppContainer.DEFAULT;
     }
 
+    @Provides @Singleton public ActivityHierarchyServer provideActivityHierarchyServer() {
+        return ActivityHierarchyServer.NONE;
+    }
+
 }

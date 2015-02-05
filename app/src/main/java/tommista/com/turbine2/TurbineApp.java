@@ -3,8 +3,11 @@ package tommista.com.turbine2;
 import android.app.Application;
 import android.content.Context;
 
+import javax.inject.Inject;
+
 import dagger.ObjectGraph;
 import timber.log.Timber;
+import tommista.com.turbine2.ui.ActivityHierarchyServer;
 import tommista.com.turbine2.ui.TurbineModule;
 
 /**
@@ -12,7 +15,7 @@ import tommista.com.turbine2.ui.TurbineModule;
  */
 public class TurbineApp extends Application{
 
-    //@Inject ActivityHierarchyServer activityHierarchyServer;
+    @Inject ActivityHierarchyServer activityHierarchyServer;
 
     private ObjectGraph objectGraph;
 
@@ -33,7 +36,7 @@ public class TurbineApp extends Application{
 
         //rootScope = Mortar.createRootScope(BuildConfig.DEBUG);
 
-        //registerActivityLifecycleCallbacks(activityHierarchyServer);
+        registerActivityLifecycleCallbacks(activityHierarchyServer);
     }
 
     public void buildObjectGraphAndInject() {
