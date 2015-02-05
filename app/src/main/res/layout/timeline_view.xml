@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<tommista.com.turbine2.ui.TimelineView
+<tommista.com.turbine2.ui.Timeline.TimelineView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -20,4 +20,4 @@
 
     </ListView>
 
-</tommista.com.turbine2.ui.TimelineView>
+</tommista.com.turbine2.ui.Timeline.TimelineView>

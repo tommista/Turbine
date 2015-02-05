@@ -34,8 +34,6 @@ public class TurbineApp extends Application{
 
         buildObjectGraphAndInject();
 
-        //rootScope = Mortar.createRootScope(BuildConfig.DEBUG);
-
         registerActivityLifecycleCallbacks(activityHierarchyServer);
     }
 
@@ -47,8 +45,4 @@ public class TurbineApp extends Application{
     public void inject(Object o) {
         objectGraph.inject(o);
     }
-
-    /*public MortarScope getRootScope() {
-        return rootScope;
-    }*/
 }

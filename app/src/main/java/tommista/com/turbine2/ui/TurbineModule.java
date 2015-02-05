@@ -7,6 +7,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import tommista.com.turbine2.TurbineApp;
+import tommista.com.turbine2.ui.Timeline.TimelineView;
 
 /**
  * Created by tbrown on 2/5/15.
