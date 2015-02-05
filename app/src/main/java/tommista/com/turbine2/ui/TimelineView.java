@@ -5,6 +5,8 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import timber.log.Timber;
+
 /**
  * Created by tbrown on 2/4/15.
  */
@@ -14,11 +16,13 @@ public class TimelineView extends LinearLayout{
 
     public TimelineView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        Timber.i("I got created");
     }
 
     @Override
     protected void onFinishInflate(){
         super.onFinishInflate();
+        Timber.i("On finish inflate");
     }
 
 }

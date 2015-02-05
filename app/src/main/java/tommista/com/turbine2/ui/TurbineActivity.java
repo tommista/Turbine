@@ -1,17 +1,40 @@
-package tommista.com.turbine2;
+package tommista.com.turbine2.ui;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+
+import javax.inject.Inject;
+
+import tommista.com.turbine2.R;
+import tommista.com.turbine2.TurbineApp;
 
 
 public class TurbineActivity extends ActionBarActivity {
 
+    @Inject
+    AppContainer appContainer;
+
+    //private MortarActivityScope activityScope;
+    private ViewGroup container;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.timeline_view);
+
+        TurbineApp app = TurbineApp.get(this);
+        app.inject(this);
+
+        container = appContainer.get(this);
+
+        //MortarScope parentScope = ((BirdcageApp) getApplication()).getRootScope();
+        //activityScope = Mortar.requireActivityScope(parentScope, new Main());
+        //Mortar.inject(this, this);
+
+
+        getLayoutInflater().inflate(R.layout.timeline_view, container);
     }
 
 
