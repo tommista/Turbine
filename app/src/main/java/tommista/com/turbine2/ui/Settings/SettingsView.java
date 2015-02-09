@@ -18,7 +18,7 @@ public class SettingsView extends LinearLayout {
     private Context context;
     //private HandleAdapter adapter;
     private Button addButton;
-    private EditText eText;
+    private EditText newHandleEditText;
 
 
     public SettingsView(Context context, AttributeSet attrs) {
@@ -32,15 +32,16 @@ public class SettingsView extends LinearLayout {
         //adapter = new HandleAdapter(context, HandleManager.getInstance().getHandleList()) ;
         //final ListView listView = (ListView) this.findViewById(R.id.listview);
 
-
         addButton = (Button) this.findViewById(R.id.add_button);
+        newHandleEditText = (EditText) this.findViewById(R.id.edit_text);
 
+        newHandleEditText.setHint("  " + newHandleEditText.getHint());
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                eText = (EditText) findViewById(R.id.edit_text);
-                String name = eText.getText().toString();
+                newHandleEditText = (EditText) findViewById(R.id.edit_text);
+                String name = newHandleEditText.getText().toString();
                 if (name.isEmpty()) return;
                 if(!name.startsWith("@")){
                     name = "@" + name;

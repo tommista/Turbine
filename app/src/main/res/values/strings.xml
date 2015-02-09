@@ -3,7 +3,7 @@
 
     <string name="app_name">Turbine</string>
     <string name="action_settings">Settings</string>
-    <string name="twitter_handle">  Twitter Handle</string>
+    <string name="twitter_handle">Twitter Handle</string>
     <string name="add_button_text">Add</string>
 
 </resources>
