@@ -7,8 +7,13 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 import tommista.com.turbine2.R;
+import tommista.com.turbine2.adapters.HandleAdapter;
+import tommista.com.turbine2.models.Handle;
 
 /**
  * Created by tbrown on 2/9/15.
@@ -16,7 +21,7 @@ import tommista.com.turbine2.R;
 public class SettingsView extends LinearLayout {
 
     private Context context;
-    //private HandleAdapter adapter;
+    private HandleAdapter adapter;
     private Button addButton;
     private EditText newHandleEditText;
 
@@ -29,8 +34,9 @@ public class SettingsView extends LinearLayout {
     @Override
     protected void onFinishInflate(){
         super.onFinishInflate();
-        //adapter = new HandleAdapter(context, HandleManager.getInstance().getHandleList()) ;
-        //final ListView listView = (ListView) this.findViewById(R.id.listview);
+        adapter = new HandleAdapter(context, /*HandleManager.getInstance().getHandleList()*/ new ArrayList<Handle>()) ;
+
+        final ListView listView = (ListView) this.findViewById(R.id.listview);
 
         addButton = (Button) this.findViewById(R.id.add_button);
         newHandleEditText = (EditText) this.findViewById(R.id.edit_text);
@@ -42,8 +48,10 @@ public class SettingsView extends LinearLayout {
             public void onClick(View v) {
                 newHandleEditText = (EditText) findViewById(R.id.edit_text);
                 String name = newHandleEditText.getText().toString();
-                if (name.isEmpty()) return;
-                if(!name.startsWith("@")){
+                if(name.isEmpty()){
+                    return;
+                }
+                else if(!name.startsWith("@")){
                     name = "@" + name;
                 }
                 //HandleManager.getInstance().addHandle(name);
@@ -51,7 +59,7 @@ public class SettingsView extends LinearLayout {
                 hideInputMethod(v);
             }
         });
-        //listView.setAdapter(adapter);
+        listView.setAdapter(adapter);
     }
     private void hideInputMethod(View view) {
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
