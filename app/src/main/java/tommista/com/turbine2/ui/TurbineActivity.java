@@ -4,9 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
-
-import javax.inject.Inject;
 
 import tommista.com.turbine2.R;
 import tommista.com.turbine2.TurbineApp;
@@ -14,11 +11,7 @@ import tommista.com.turbine2.TurbineApp;
 
 public class TurbineActivity extends ActionBarActivity {
 
-    @Inject
-    AppContainer appContainer;
-
     //private MortarActivityScope activityScope;
-    private ViewGroup container;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +20,12 @@ public class TurbineActivity extends ActionBarActivity {
         TurbineApp app = TurbineApp.get(this);
         app.inject(this);
 
-        container = appContainer.get(this);
-
         //MortarScope parentScope = ((BirdcageApp) getApplication()).getRootScope();
         //activityScope = Mortar.requireActivityScope(parentScope, new Main());
         //Mortar.inject(this, this);
 
 
-        getLayoutInflater().inflate(R.layout.timeline_view, container);
+        setContentView(R.layout.timeline_view);
     }
 
 
