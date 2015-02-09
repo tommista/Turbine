@@ -2,4 +2,5 @@
 <resources>
     <color name="blueGray">#EDEDEF</color>
     <color name="darkBlue">#59708e</color>
+    <color name="textViewStroke">#DDDDDD</color>
 </resources>

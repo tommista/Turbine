@@ -45,6 +45,7 @@ public class TurbineActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            setContentView(R.layout.settings_view);
             return true;
         }
 

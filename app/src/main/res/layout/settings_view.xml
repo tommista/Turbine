@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tommista.com.turbine2.ui.Settings.SettingsView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blueGray"
+
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="@color/darkBlue"/>
+
+    <LinearLayout
+        android:id="@+id/ver_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="0dp">
+        <LinearLayout
+            android:id="@+id/hor_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerVertical="true"
+            android:weightSum="2"
+            android:layout_marginBottom="10dp"
+            >
+
+            <EditText
+                android:id="@+id/edit_text"
+                android:layout_width="408dp"
+                android:layout_height="50dp"
+                android:textColor="@android:color/black"
+                android:hint="@string/twitter_handle"
+                android:lines="1"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight= "15dp"
+                android:layout_weight="1"
+                android:background="@drawable/settings_textview"/>
+            <Button
+                android:id="@+id/add_button"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="@string/add_button_text"
+                android:layout_weight="1"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/add_button"/>
+
+        </LinearLayout>
+
+        <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/listview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+        </ListView>
+
+    </LinearLayout>
+
+
+</tommista.com.turbine2.ui.Settings.SettingsView>
