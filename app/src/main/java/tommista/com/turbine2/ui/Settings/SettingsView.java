@@ -34,7 +34,12 @@ public class SettingsView extends LinearLayout {
     @Override
     protected void onFinishInflate(){
         super.onFinishInflate();
-        adapter = new HandleAdapter(context, /*HandleManager.getInstance().getHandleList()*/ new ArrayList<Handle>()) ;
+
+        ArrayList<Handle> tempList = new ArrayList<>();
+        tempList.add(new Handle("@asdf"));
+        tempList.add(new Handle("@qwerasdf"));
+
+        adapter = new HandleAdapter(context, /*HandleManager.getInstance().getHandleList()*/ tempList) ;
 
         final ListView listView = (ListView) this.findViewById(R.id.listview);
 
