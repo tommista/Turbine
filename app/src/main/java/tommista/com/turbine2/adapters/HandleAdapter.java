@@ -19,29 +19,30 @@ import tommista.com.turbine2.models.Handle;
  */
 public class HandleAdapter extends ArrayAdapter<Handle> {
 
+    private ArrayList<Handle> handles;
+
     public HandleAdapter(Context context, ArrayList<Handle> handles) {
         super(context, R.layout.handle_view , handles);
+        this.handles = handles;
     }
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        Handle handle = getItem(position);
+        final Handle handle = getItem(position);
         Timber.i("position=%d,handle=%s", position, handle.getTwitterHandle());
 
-        View view;
         if(convertView == null){
-            LayoutInflater inflator = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflator.inflate(R.layout.handle_view, null);
+            LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.handle_view, null);
         }
-
 
         TextView handle_text= (TextView) convertView.findViewById(R.id.handle_text);
         Button button = (Button) convertView.findViewById(R.id.del_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //HandleManager.getInstance().deleteHandle(getItem(position).getTwitterHandle());
-                //MainActivity.getInstance().resetSettings();
+                handles.remove(handle);
+                notifyDataSetChanged();
             }
         });
         handle_text.setText(handle.getTwitterHandle());
