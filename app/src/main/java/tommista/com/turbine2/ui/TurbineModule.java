@@ -2,11 +2,18 @@ package tommista.com.turbine2.ui;
 
 import android.app.Application;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.util.ArrayList;
+
+import javax.inject.Qualifier;
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
 import tommista.com.turbine2.TurbineApp;
+import tommista.com.turbine2.models.Handle;
+import tommista.com.turbine2.ui.Settings.SettingsView;
 import tommista.com.turbine2.ui.Timeline.TimelineView;
 
 /**
@@ -17,7 +24,7 @@ import tommista.com.turbine2.ui.Timeline.TimelineView;
         includes = {
         },
         injects = {
-                TurbineApp.class, TurbineActivity.class, TimelineView.class
+                TurbineApp.class, TurbineActivity.class, TimelineView.class, SettingsView.class
         },
         complete = false,
         library = true
@@ -37,5 +44,14 @@ public class TurbineModule {
     @Provides @Singleton public ActivityHierarchyServer provideActivityHierarchyServer() {
         return ActivityHierarchyServer.NONE;
     }
+
+    @Provides @Singleton @HandleList public ArrayList<Handle> providesHandleList(){
+        ArrayList<Handle> handleList = new ArrayList<>();
+        handleList.add(new Handle("@asdfasdf"));
+        handleList.add(new Handle("@qwerqwer"));
+        return handleList;
+    }
+
+    @Retention(RetentionPolicy.RUNTIME) @Qualifier public @interface HandleList {}
 
 }

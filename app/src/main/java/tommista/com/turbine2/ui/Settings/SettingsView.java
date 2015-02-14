@@ -11,9 +11,14 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+
 import tommista.com.turbine2.R;
+import tommista.com.turbine2.TurbineApp;
 import tommista.com.turbine2.adapters.HandleAdapter;
 import tommista.com.turbine2.models.Handle;
+
+import static tommista.com.turbine2.ui.TurbineModule.HandleList;
 
 /**
  * Created by tbrown on 2/9/15.
@@ -25,21 +30,20 @@ public class SettingsView extends LinearLayout {
     private Button addButton;
     private EditText newHandleEditText;
 
+    @Inject @HandleList ArrayList<Handle> handleList;
+
 
     public SettingsView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
+        TurbineApp.get(context).inject(this);
     }
 
     @Override
     protected void onFinishInflate(){
         super.onFinishInflate();
 
-        ArrayList<Handle> tempList = new ArrayList<>();
-        tempList.add(new Handle("@asdf"));
-        tempList.add(new Handle("@qwerasdf"));
-
-        adapter = new HandleAdapter(context, /*HandleManager.getInstance().getHandleList()*/ tempList) ;
+        adapter = new HandleAdapter(context, handleList) ;
 
         final ListView listView = (ListView) this.findViewById(R.id.listview);
 
@@ -59,8 +63,10 @@ public class SettingsView extends LinearLayout {
                 else if(!name.startsWith("@")){
                     name = "@" + name;
                 }
-                //HandleManager.getInstance().addHandle(name);
-                //MainActivity.getInstance().resetSettings();
+
+                handleList.add(new Handle(name));
+                adapter.notifyDataSetChanged();
+
                 hideInputMethod(v);
             }
         });

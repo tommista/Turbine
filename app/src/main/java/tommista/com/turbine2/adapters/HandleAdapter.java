@@ -19,16 +19,14 @@ import tommista.com.turbine2.models.Handle;
  */
 public class HandleAdapter extends ArrayAdapter<Handle> {
 
-
     public HandleAdapter(Context context, ArrayList<Handle> handles) {
-        super(context, R.layout.handle_view , (ArrayList<Handle>)handles.clone());
+        super(context, R.layout.handle_view , handles);
     }
+
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         Handle handle = getItem(position);
         Timber.i("position=%d,handle=%s", position, handle.getTwitterHandle());
-
-
 
         View view;
         if(convertView == null){
