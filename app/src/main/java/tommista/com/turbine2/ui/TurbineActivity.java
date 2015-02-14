@@ -11,19 +11,12 @@ import tommista.com.turbine2.TurbineApp;
 
 public class TurbineActivity extends ActionBarActivity {
 
-    //private MortarActivityScope activityScope;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         TurbineApp app = TurbineApp.get(this);
         app.inject(this);
-
-        //MortarScope parentScope = ((BirdcageApp) getApplication()).getRootScope();
-        //activityScope = Mortar.requireActivityScope(parentScope, new Main());
-        //Mortar.inject(this, this);
-
 
         setContentView(R.layout.timeline_view);
     }
@@ -47,6 +40,9 @@ public class TurbineActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             setContentView(R.layout.settings_view);
             return true;
+        }
+        else if(id == R.id.action_refresh){
+
         }
 
         return super.onOptionsItemSelected(item);

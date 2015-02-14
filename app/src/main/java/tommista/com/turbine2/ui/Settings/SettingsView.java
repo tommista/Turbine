@@ -72,6 +72,7 @@ public class SettingsView extends LinearLayout {
         });
         listView.setAdapter(adapter);
     }
+
     private void hideInputMethod(View view) {
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm != null && view != null) {
