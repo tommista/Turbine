@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import timber.log.Timber;
 import tommista.com.turbine2.R;
 import tommista.com.turbine2.TurbineApp;
 
@@ -46,5 +47,11 @@ public class TurbineActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed(){
+        Timber.i("back button pressed");
+        setContentView(R.layout.timeline_view);
     }
 }
