@@ -13,7 +13,7 @@
 
     <TextView
         android:id="@+id/handle_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="3"
         android:textColor="@android:color/black"
@@ -21,7 +21,7 @@
         android:textSize="18sp"/>
     <Button
         android:id="@+id/del_button"
-        android:layout_width="10dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:layout_marginRight="5dp"
