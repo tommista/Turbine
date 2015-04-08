@@ -18,7 +18,7 @@ import tommista.com.turbine2.TurbineApp;
 import tommista.com.turbine2.adapters.HandleAdapter;
 import tommista.com.turbine2.models.Handle;
 
-import static tommista.com.turbine2.ui.TurbineModule.HandleList;
+import static tommista.com.turbine2.TurbineModule.HandleList;
 
 /**
  * Created by tbrown on 2/9/15.

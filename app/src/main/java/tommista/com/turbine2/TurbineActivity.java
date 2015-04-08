@@ -1,4 +1,4 @@
-package tommista.com.turbine2.ui;
+package tommista.com.turbine2;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -6,8 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import timber.log.Timber;
-import tommista.com.turbine2.R;
-import tommista.com.turbine2.TurbineApp;
 
 
 public class TurbineActivity extends ActionBarActivity {

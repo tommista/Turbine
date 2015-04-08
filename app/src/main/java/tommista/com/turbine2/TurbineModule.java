@@ -1,4 +1,4 @@
-package tommista.com.turbine2.ui;
+package tommista.com.turbine2;
 
 import android.app.Application;
 
@@ -11,8 +11,10 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import tommista.com.turbine2.TurbineActivity;
 import tommista.com.turbine2.TurbineApp;
 import tommista.com.turbine2.models.Handle;
+import tommista.com.turbine2.ui.ActivityHierarchyServer;
 import tommista.com.turbine2.ui.Settings.SettingsView;
 import tommista.com.turbine2.ui.Timeline.TimelineView;
 

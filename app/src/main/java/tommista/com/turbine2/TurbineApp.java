@@ -8,7 +8,6 @@ import javax.inject.Inject;
 import dagger.ObjectGraph;
 import timber.log.Timber;
 import tommista.com.turbine2.ui.ActivityHierarchyServer;
-import tommista.com.turbine2.ui.TurbineModule;
 
 /**
  * Created by tbrown on 2/5/15.
