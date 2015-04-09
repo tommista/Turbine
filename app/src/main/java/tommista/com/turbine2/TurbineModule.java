@@ -11,9 +11,8 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import tommista.com.turbine2.TurbineActivity;
-import tommista.com.turbine2.TurbineApp;
 import tommista.com.turbine2.models.Handle;
+import tommista.com.turbine2.net.TwitterAPI;
 import tommista.com.turbine2.ui.ActivityHierarchyServer;
 import tommista.com.turbine2.ui.Settings.SettingsView;
 import tommista.com.turbine2.ui.Timeline.TimelineView;
@@ -52,6 +51,10 @@ public class TurbineModule {
         handleList.add(new Handle("@asdfasdf"));
         handleList.add(new Handle("@qwerqwer"));
         return handleList;
+    }
+
+    @Provides @Singleton public TwitterAPI providesTwitterAPI(){
+        return new TwitterAPI();
     }
 
     @Retention(RetentionPolicy.RUNTIME) @Qualifier public @interface HandleList {}

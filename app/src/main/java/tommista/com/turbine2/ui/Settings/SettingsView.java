@@ -17,6 +17,7 @@ import tommista.com.turbine2.R;
 import tommista.com.turbine2.TurbineApp;
 import tommista.com.turbine2.adapters.HandleAdapter;
 import tommista.com.turbine2.models.Handle;
+import tommista.com.turbine2.net.TwitterAPI;
 
 import static tommista.com.turbine2.TurbineModule.HandleList;
 
@@ -31,6 +32,7 @@ public class SettingsView extends LinearLayout {
     private EditText newHandleEditText;
 
     @Inject @HandleList ArrayList<Handle> handleList;
+    @Inject TwitterAPI twitterAPI;
 
 
     public SettingsView(Context context, AttributeSet attrs) {
