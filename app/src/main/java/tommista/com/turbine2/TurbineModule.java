@@ -53,8 +53,8 @@ public class TurbineModule {
         return handleList;
     }
 
-    @Provides @Singleton public TwitterAPI providesTwitterAPI(){
-        return new TwitterAPI();
+    @Provides @Singleton public TwitterAPI providesTwitterAPI(Application application){
+        return new TwitterAPI(application.getApplicationContext());
     }
 
     @Retention(RetentionPolicy.RUNTIME) @Qualifier public @interface HandleList {}
