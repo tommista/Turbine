@@ -1,7 +1,10 @@
 package tommista.com.turbine2.net;
 
+import android.content.Context;
+
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
+import tommista.com.turbine2.R;
 import tommista.com.turbine2.net.services.TimelineService;
 
 public class TwitterAPI {
@@ -11,13 +14,12 @@ public class TwitterAPI {
 
     public TimelineService timelineService;
 
-    public TwitterAPI() {
+    public TwitterAPI(final Context context) {
 
         reqInterceptor = new RequestInterceptor() {
             @Override
             public void intercept(RequestFacade requestFacade) {
-                //requestFacade.addHeader("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAALXqdgAAAAAAMfVikYHyimgiQKPW9bqJGndfngk%3Dad7RyM7WUMG5knJcMm7PKICeoOLOfvORmqBZUlvvTVV6J3FI81");
-                //requestFacade.addHeader("Authorization", "Basic Tk9yOXliM3V1TWcyakdFSlFuWTVzSjF0MDpuVGNqWVhMWFJ1UkwyY0U3ejlXMmRMWUxrakhaRlE3NFl0TVBDMnNIWUF3NXhSaHo2Rg==");
+                requestFacade.addHeader("Authorization", "Bearer " + context.getResources().getString(R.string.twitter_token));
             }
         };
 
