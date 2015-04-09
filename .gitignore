@@ -42,3 +42,6 @@ proguard/
 .idea/dataSources.ids
 .idea/libraries
 # Maybe add .idea/libraries as these might be generated from Gradle
+
+#Turbine specific
+app/src/main/res/values/secrets.xml
