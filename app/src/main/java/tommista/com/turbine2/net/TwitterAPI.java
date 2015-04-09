@@ -6,14 +6,14 @@ import com.google.gson.GsonBuilder;
 
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
+import tommista.com.turbine2.net.services.TimelineService;
 
 public class TwitterAPI {
     private static final String SERVER_ADDRESS = "https://api.twitter.com";
     private final RestAdapter restAdapter;
     private RequestInterceptor reqInterceptor;
 
-    //public OauthService oauthService;
-    //public TimelineServices timelineServices;
+    public TimelineService timelineService;
 
     public Gson gson;
 
@@ -37,7 +37,6 @@ public class TwitterAPI {
                 .setRequestInterceptor(reqInterceptor)
                 .build();
 
-        //oauthService = restAdapter.create(OauthService.class);
-        //timelineServices = restAdapter.create(TimelineServices.class);
+        timelineService = restAdapter.create(TimelineService.class);
     }
 }
