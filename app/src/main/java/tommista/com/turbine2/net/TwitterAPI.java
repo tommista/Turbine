@@ -1,9 +1,5 @@
 package tommista.com.turbine2.net;
 
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 import tommista.com.turbine2.net.services.TimelineService;
@@ -15,13 +11,7 @@ public class TwitterAPI {
 
     public TimelineService timelineService;
 
-    public Gson gson;
-
     public TwitterAPI() {
-
-        gson = new GsonBuilder()
-                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-                .create();
 
         reqInterceptor = new RequestInterceptor() {
             @Override
