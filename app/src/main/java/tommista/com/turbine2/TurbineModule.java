@@ -14,7 +14,6 @@ import dagger.Provides;
 import tommista.com.turbine2.models.Handle;
 import tommista.com.turbine2.models.Tweet;
 import tommista.com.turbine2.net.TwitterAPI;
-import tommista.com.turbine2.ui.ActivityHierarchyServer;
 import tommista.com.turbine2.ui.Settings.SettingsView;
 import tommista.com.turbine2.ui.Timeline.TimelineView;
 
@@ -41,10 +40,6 @@ public class TurbineModule {
 
     @Provides @Singleton public Application provideApplication() {
         return app;
-    }
-
-    @Provides @Singleton public ActivityHierarchyServer provideActivityHierarchyServer() {
-        return ActivityHierarchyServer.NONE;
     }
 
     @Provides @Singleton @HandleList public ArrayList<Handle> providesHandleList(){

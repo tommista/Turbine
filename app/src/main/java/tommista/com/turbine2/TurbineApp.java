@@ -3,18 +3,13 @@ package tommista.com.turbine2;
 import android.app.Application;
 import android.content.Context;
 
-import javax.inject.Inject;
-
 import dagger.ObjectGraph;
 import timber.log.Timber;
-import tommista.com.turbine2.ui.ActivityHierarchyServer;
 
 /**
  * Created by tbrown on 2/5/15.
  */
 public class TurbineApp extends Application{
-
-    @Inject ActivityHierarchyServer activityHierarchyServer;
 
     private ObjectGraph objectGraph;
 
@@ -32,8 +27,6 @@ public class TurbineApp extends Application{
         }
 
         buildObjectGraphAndInject();
-
-        registerActivityLifecycleCallbacks(activityHierarchyServer);
     }
 
     public void buildObjectGraphAndInject() {
