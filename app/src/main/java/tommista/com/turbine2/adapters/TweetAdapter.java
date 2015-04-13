@@ -29,6 +29,8 @@ public class TweetAdapter extends ArrayAdapter<Tweet>{
             convertView = inflater.inflate(R.layout.handle_view, null);
         }
 
+        
+
         return convertView;
     }
 

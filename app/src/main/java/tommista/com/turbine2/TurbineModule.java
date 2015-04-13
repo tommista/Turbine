@@ -12,6 +12,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import tommista.com.turbine2.models.Handle;
+import tommista.com.turbine2.models.Tweet;
 import tommista.com.turbine2.net.TwitterAPI;
 import tommista.com.turbine2.ui.ActivityHierarchyServer;
 import tommista.com.turbine2.ui.Settings.SettingsView;
@@ -53,10 +54,15 @@ public class TurbineModule {
         return handleList;
     }
 
+    @Provides @Singleton @TweetList public ArrayList<Tweet> providesTweetList(){
+        return new ArrayList<>();
+    }
+
     @Provides @Singleton public TwitterAPI providesTwitterAPI(Application application){
         return new TwitterAPI(application.getApplicationContext());
     }
 
     @Retention(RetentionPolicy.RUNTIME) @Qualifier public @interface HandleList {}
+    @Retention(RetentionPolicy.RUNTIME) @Qualifier public @interface TweetList {}
 
 }
