@@ -53,17 +53,4 @@ public class Tweet implements Comparable<Tweet>{
 
     }
 
-    private class User {
-
-        @SerializedName("profile_image_url")
-        public String profileImageURL;
-
-    }
-
-    private class TweetUrls {
-
-        @SerializedName("expanded_url")
-        public String expandedUrl;
-    }
-
 }
