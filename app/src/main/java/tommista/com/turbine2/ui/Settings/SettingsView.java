@@ -17,8 +17,10 @@ import tommista.com.turbine2.R;
 import tommista.com.turbine2.TurbineApp;
 import tommista.com.turbine2.adapters.HandleAdapter;
 import tommista.com.turbine2.models.Handle;
+import tommista.com.turbine2.util.StringPreference;
 
 import static tommista.com.turbine2.TurbineModule.HandleList;
+import static tommista.com.turbine2.TurbineModule.SavedHandlesPreference;
 
 /**
  * Created by tbrown on 2/9/15.
@@ -31,6 +33,7 @@ public class SettingsView extends LinearLayout {
     private EditText newHandleEditText;
 
     @Inject @HandleList ArrayList<Handle> handleList;
+    @Inject @SavedHandlesPreference StringPreference savedHandles;
 
     public SettingsView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -64,6 +67,18 @@ public class SettingsView extends LinearLayout {
                 }
 
                 handleList.add(new Handle(name));
+
+                String handlesCombo = "";
+                for(int i = 0; i < handleList.size(); i++){
+                    if(i == handleList.size() - 1){
+                        handlesCombo += handleList.get(i).getTwitterHandle();
+                    } else{
+                        handlesCombo += handleList.get(i).getTwitterHandle() + "&";
+                    }
+                }
+
+                savedHandles.set(handlesCombo);
+
                 adapter.notifyDataSetChanged();
 
                 hideInputMethod(v);

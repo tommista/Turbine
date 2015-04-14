@@ -13,6 +13,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import tommista.com.turbine2.adapters.HandleAdapter;
 import tommista.com.turbine2.models.Handle;
 import tommista.com.turbine2.models.Tweet;
 import tommista.com.turbine2.net.TwitterAPI;
@@ -30,7 +31,7 @@ import static android.content.Context.MODE_PRIVATE;
         includes = {
         },
         injects = {
-                TurbineApp.class, TurbineActivity.class, TimelineView.class, SettingsView.class
+                TurbineApp.class, TurbineActivity.class, TimelineView.class, SettingsView.class, HandleAdapter.class
         },
         complete = false,
         library = true
@@ -51,10 +52,17 @@ public class TurbineModule {
         return app.getSharedPreferences("turbine", MODE_PRIVATE);
     }
 
-    @Provides @Singleton @HandleList public ArrayList<Handle> providesHandleList(){
+    @Provides @Singleton @HandleList public ArrayList<Handle> providesHandleList(@SavedHandlesPreference StringPreference stringPreference){
         ArrayList<Handle> handleList = new ArrayList<>();
-        handleList.add(new Handle("@asdfasdf"));
-        handleList.add(new Handle("@qwerqwer"));
+
+        String savedHandles = stringPreference.get();
+        if(savedHandles != null && savedHandles.length() > 0){
+            String[] parts = savedHandles.split("&");
+            for(int i = 0; i < parts.length; i++){
+                handleList.add(new Handle(parts[i]));
+            }
+        }
+
         return handleList;
     }
 
