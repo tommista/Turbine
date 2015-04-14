@@ -25,6 +25,7 @@ public class TimelineView extends LinearLayout{
     private Context context;
     private ListView listView;
     private TweetAdapter tweetAdapter;
+    private ArrayList<Tweet> adapterArray;
 
     @Inject TwitterAPI twitterAPI;
 
@@ -43,7 +44,9 @@ public class TimelineView extends LinearLayout{
 
         listView = (ListView) findViewById(R.id.main_list_view);
 
-        tweetAdapter = new TweetAdapter(context, new ArrayList<Tweet>(tweetList));
+        adapterArray = new ArrayList<Tweet>(tweetList);
+
+        tweetAdapter = new TweetAdapter(context, adapterArray);
 
         listView.setAdapter(tweetAdapter);
 
