@@ -7,5 +7,6 @@
     <string name="twitter_handle">Twitter Handle</string>
     <string name="add_button_text">Add</string>
     <string name="delete_button_text">Delete</string>
+    <string name="saved_handles_list_key">savedHandlesList</string>
 
 </resources>

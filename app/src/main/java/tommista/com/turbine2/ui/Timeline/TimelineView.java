@@ -6,6 +6,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.PriorityQueue;
 
 import javax.inject.Inject;
 
@@ -28,7 +29,7 @@ public class TimelineView extends LinearLayout{
     @Inject TwitterAPI twitterAPI;
 
     @Inject @HandleList ArrayList<Handle> handleList;
-    @Inject @TweetList ArrayList<Tweet> tweetList;
+    @Inject @TweetList PriorityQueue<Tweet> tweetList;
 
     public TimelineView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -42,7 +43,7 @@ public class TimelineView extends LinearLayout{
 
         listView = (ListView) findViewById(R.id.main_list_view);
 
-        tweetAdapter = new TweetAdapter(context, tweetList);
+        tweetAdapter = new TweetAdapter(context, new ArrayList<Tweet>(tweetList));
 
         listView.setAdapter(tweetAdapter);
 

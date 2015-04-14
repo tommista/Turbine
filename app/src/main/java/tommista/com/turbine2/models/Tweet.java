@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by tbrown on 2/13/15.
  */
-public class Tweet {
+public class Tweet implements Comparable<Tweet>{
 
     public Tweet(Tweet tweet){
         this.tweetId = tweet.tweetId;
@@ -14,6 +14,7 @@ public class Tweet {
         this.screenName = tweet.screenName;
         this.tweetEntities = tweet.tweetEntities;
         this.goodUrl = tweet.goodUrl;
+        this.createdAt = tweet.createdAt;
     }
 
     public String goodUrl;
@@ -33,9 +34,16 @@ public class Tweet {
     @SerializedName("screen_name")
     public String screenName;
 
+    @SerializedName("created_at")
+    public String createdAt;
+
     @Override
     public String toString(){
         return tweetEntities.urlList[0].expandedUrl;
+    }
+
+    public int compareTo(Tweet tweet){
+        return 0; //TBD
     }
 
     private class TweetEntities {
