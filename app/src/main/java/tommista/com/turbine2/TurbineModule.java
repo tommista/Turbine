@@ -66,7 +66,7 @@ public class TurbineModule {
     }
 
     @Provides public HandleAdapter providesHandleAdapter(Application application, Handles handles){
-        return new HandleAdapter(application, handles.getHandleList());
+        return new HandleAdapter(application, handles);
     }
 
     @Provides public TweetAdapter providesTweetAdapter(Application application, Tweets tweets){

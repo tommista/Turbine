@@ -8,9 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 import timber.log.Timber;
+import tommista.com.turbine2.Handles;
 import tommista.com.turbine2.R;
 
 /**
@@ -18,10 +17,10 @@ import tommista.com.turbine2.R;
  */
 public class HandleAdapter extends ArrayAdapter<String> {
 
-    private ArrayList<String> handles;
+    private Handles handles;
 
-    public HandleAdapter(Context context, ArrayList<String> handles) {
-        super(context, R.layout.handle_view , handles);
+    public HandleAdapter(Context context, Handles handles) {
+        super(context, R.layout.handle_view , handles.getHandleList());
         this.handles = handles;
     }
 
@@ -40,7 +39,7 @@ public class HandleAdapter extends ArrayAdapter<String> {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                handles.remove(handle);
+                handles.removeHandle(handle);
                 notifyDataSetChanged();
             }
         });
