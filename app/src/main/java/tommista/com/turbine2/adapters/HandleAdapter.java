@@ -10,34 +10,25 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import javax.inject.Inject;
-
 import timber.log.Timber;
 import tommista.com.turbine2.R;
-import tommista.com.turbine2.TurbineApp;
-import tommista.com.turbine2.models.Handle;
-import tommista.com.turbine2.util.StringPreference;
-
-import static tommista.com.turbine2.TurbineModule.SavedHandlesPreference;
 
 /**
  * Created by tbrown on 2/9/15.
  */
-public class HandleAdapter extends ArrayAdapter<Handle> {
+public class HandleAdapter extends ArrayAdapter<String> {
 
-    private ArrayList<Handle> handles;
-    @Inject @SavedHandlesPreference StringPreference savedHandles;
+    private ArrayList<String> handles;
 
-    public HandleAdapter(Context context, ArrayList<Handle> handles) {
+    public HandleAdapter(Context context, ArrayList<String> handles) {
         super(context, R.layout.handle_view , handles);
         this.handles = handles;
-        TurbineApp.get(context).inject(this);
     }
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        final Handle handle = getItem(position);
-        Timber.i("position=%d,handle=%s", position, handle.getTwitterHandle());
+        final String handle = getItem(position);
+        Timber.i("position=%d,handle=%s", position, handle);
 
         if(convertView == null){
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -50,22 +41,10 @@ public class HandleAdapter extends ArrayAdapter<Handle> {
             @Override
             public void onClick(View v) {
                 handles.remove(handle);
-
-                String handlesCombo = "";
-                for(int i = 0; i < handles.size(); i++){
-                    if(i == handles.size() - 1){
-                        handlesCombo += handles.get(i).getTwitterHandle();
-                    } else{
-                        handlesCombo += handles.get(i).getTwitterHandle() + "&";
-                    }
-                }
-
-                savedHandles.set(handlesCombo);
-
                 notifyDataSetChanged();
             }
         });
-        handle_text.setText(handle.getTwitterHandle());
+        handle_text.setText(handle);
         return convertView;
     }
 

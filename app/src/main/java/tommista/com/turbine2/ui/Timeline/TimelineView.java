@@ -13,11 +13,9 @@ import javax.inject.Inject;
 import tommista.com.turbine2.R;
 import tommista.com.turbine2.TurbineApp;
 import tommista.com.turbine2.adapters.TweetAdapter;
-import tommista.com.turbine2.models.Handle;
 import tommista.com.turbine2.models.Tweet;
 import tommista.com.turbine2.net.TwitterAPI;
 
-import static tommista.com.turbine2.TurbineModule.HandleList;
 import static tommista.com.turbine2.TurbineModule.TweetList;
 
 public class TimelineView extends LinearLayout{
@@ -29,7 +27,7 @@ public class TimelineView extends LinearLayout{
 
     @Inject TwitterAPI twitterAPI;
 
-    @Inject @HandleList ArrayList<Handle> handleList;
+    //@Inject @HandleList ArrayList<Handle> handleList;
     @Inject @TweetList PriorityQueue<Tweet> tweetList;
 
     public TimelineView(Context context, AttributeSet attrs) {
