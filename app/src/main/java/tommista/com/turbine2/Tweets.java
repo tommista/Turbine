@@ -1,15 +1,14 @@
 package tommista.com.turbine2;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 
 import tommista.com.turbine2.models.Tweet;
 
 public class Tweets {
 
     private HashMap<String, Tweet> tweetMap;
+    private ArrayList<Tweet> sortedList;
 
     public Tweets(){
         tweetMap = new HashMap<>();
@@ -27,9 +26,7 @@ public class Tweets {
         tweetMap.remove(tweet.tweetId);
     }
 
-    public List<Tweet> getSortedList(){
-        ArrayList<Tweet> tempList = new ArrayList<Tweet>(tweetMap.values());
-        Collections.sort(tempList);
-        return tempList;
+    public ArrayList<Tweet> getSortedList(){
+        return sortedList;
     }
 }

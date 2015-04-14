@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-import java.util.PriorityQueue;
 
 import javax.inject.Qualifier;
 import javax.inject.Singleton;
@@ -13,7 +12,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import tommista.com.turbine2.adapters.HandleAdapter;
-import tommista.com.turbine2.models.Tweet;
+import tommista.com.turbine2.adapters.TweetAdapter;
 import tommista.com.turbine2.net.TwitterAPI;
 import tommista.com.turbine2.ui.Settings.SettingsView;
 import tommista.com.turbine2.ui.Timeline.TimelineView;
@@ -54,8 +53,8 @@ public class TurbineModule {
         return new Handles(stringPreference);
     }
 
-    @Provides @Singleton @TweetList public PriorityQueue<Tweet> providesTweetList(){
-        return new PriorityQueue<>();
+    @Provides @Singleton public Tweets providesTweets(){
+        return new Tweets();
     }
 
     @Provides @Singleton public TwitterAPI providesTwitterAPI(Application application){
@@ -68,6 +67,10 @@ public class TurbineModule {
 
     @Provides public HandleAdapter providesHandleAdapter(Application application, Handles handles){
         return new HandleAdapter(application, handles.getHandleList());
+    }
+
+    @Provides public TweetAdapter providesTweetAdapter(Application application, Tweets tweets){
+        return new TweetAdapter(application, tweets.getSortedList());
     }
 
     @Retention(RetentionPolicy.RUNTIME) @Qualifier public @interface TweetList {}

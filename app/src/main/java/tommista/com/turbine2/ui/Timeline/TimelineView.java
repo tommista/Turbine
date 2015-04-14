@@ -5,30 +5,22 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
-import java.util.ArrayList;
-import java.util.PriorityQueue;
-
 import javax.inject.Inject;
 
 import tommista.com.turbine2.R;
 import tommista.com.turbine2.TurbineApp;
+import tommista.com.turbine2.Tweets;
 import tommista.com.turbine2.adapters.TweetAdapter;
-import tommista.com.turbine2.models.Tweet;
 import tommista.com.turbine2.net.TwitterAPI;
-
-import static tommista.com.turbine2.TurbineModule.TweetList;
 
 public class TimelineView extends LinearLayout{
 
     private Context context;
     private ListView listView;
-    private TweetAdapter tweetAdapter;
-    private ArrayList<Tweet> adapterArray;
 
     @Inject TwitterAPI twitterAPI;
-
-    //@Inject @HandleList ArrayList<Handle> handleList;
-    @Inject @TweetList PriorityQueue<Tweet> tweetList;
+    @Inject Tweets tweets;
+    @Inject TweetAdapter tweetAdapter;
 
     public TimelineView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -41,12 +33,6 @@ public class TimelineView extends LinearLayout{
         super.onFinishInflate();
 
         listView = (ListView) findViewById(R.id.main_list_view);
-
-        adapterArray = new ArrayList<Tweet>(tweetList);
-
-        tweetAdapter = new TweetAdapter(context, adapterArray);
-
-        listView.setAdapter(tweetAdapter);
 
     }
 
