@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 
 import tommista.com.turbine2.R;
 import tommista.com.turbine2.Tweets;
@@ -31,7 +32,8 @@ public class TweetAdapter extends ArrayAdapter<Tweet>{
             convertView = inflater.inflate(R.layout.tweet_view, null);
         }
 
-        
+        ImageView imageView = (ImageView) convertView.findViewById(R.id.image_view);
+
 
         return convertView;
     }
