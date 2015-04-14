@@ -26,6 +26,7 @@
         android:layout_weight="1"
         android:layout_marginRight="5dp"
         android:text="@string/delete_button_text"
+        android:textColor="@android:color/black"
         android:background="@drawable/delete_button_background"
         />
 

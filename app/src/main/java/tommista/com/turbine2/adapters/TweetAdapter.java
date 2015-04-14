@@ -6,9 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
-import java.util.ArrayList;
-
 import tommista.com.turbine2.R;
+import tommista.com.turbine2.Tweets;
 import tommista.com.turbine2.models.Tweet;
 
 /**
@@ -16,8 +15,11 @@ import tommista.com.turbine2.models.Tweet;
  */
 public class TweetAdapter extends ArrayAdapter<Tweet>{
 
-    public TweetAdapter(Context context, ArrayList<Tweet> tweets) {
-        super(context, R.layout.tweet_view , tweets);
+    private Tweets tweets;
+
+    public TweetAdapter(Context context, Tweets tweets) {
+        super(context, R.layout.tweet_view , tweets.getSortedList());
+        this.tweets = tweets;
     }
 
     @Override
@@ -26,7 +28,7 @@ public class TweetAdapter extends ArrayAdapter<Tweet>{
 
         if(convertView == null){
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.handle_view, null);
+            convertView = inflater.inflate(R.layout.tweet_view, null);
         }
 
         

@@ -33,6 +33,7 @@ public class TimelineView extends LinearLayout{
         super.onFinishInflate();
 
         listView = (ListView) findViewById(R.id.main_list_view);
+        listView.setAdapter(tweetAdapter);
 
     }
 

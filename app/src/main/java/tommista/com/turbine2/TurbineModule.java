@@ -70,10 +70,9 @@ public class TurbineModule {
     }
 
     @Provides public TweetAdapter providesTweetAdapter(Application application, Tweets tweets){
-        return new TweetAdapter(application, tweets.getSortedList());
+        return new TweetAdapter(application, tweets);
     }
 
-    @Retention(RetentionPolicy.RUNTIME) @Qualifier public @interface TweetList {}
     @Retention(RetentionPolicy.RUNTIME) @Qualifier public @interface SavedHandlesPreference{}
 
 }

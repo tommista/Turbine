@@ -12,6 +12,7 @@ public class Tweets {
 
     public Tweets(){
         tweetMap = new HashMap<>();
+        sortedList = new ArrayList<>();
     }
 
     public void addTweet(Tweet tweet){
