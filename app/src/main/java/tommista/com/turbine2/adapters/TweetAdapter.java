@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -47,6 +48,15 @@ public class TweetAdapter extends ArrayAdapter<Tweet>{
                 Timber.i("picasso failure for url: %s", tweet.user.profileImageURL);
             }
         });
+
+        TextView twitterName = (TextView) convertView.findViewById(R.id.twitter_name);
+        twitterName.setText(tweet.screenName);
+
+        TextView handleName = (TextView) convertView.findViewById(R.id.twitter_handle);
+        handleName.setText(tweet.screenName);
+
+        TextView tweetText = (TextView) convertView.findViewById(R.id.tweet_text);
+        tweetText.setText(tweet.tweetText);
 
         return convertView;
     }
