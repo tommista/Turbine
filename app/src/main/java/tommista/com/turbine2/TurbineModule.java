@@ -50,20 +50,6 @@ public class TurbineModule {
         return app.getSharedPreferences("turbine", MODE_PRIVATE);
     }
 
-    /*@Provides @Singleton @HandleList public ArrayList<Handle> providesHandleList(@SavedHandlesPreference StringPreference stringPreference){
-        ArrayList<Handle> handleList = new ArrayList<>();
-
-        String savedHandles = stringPreference.get();
-        if(savedHandles != null && savedHandles.length() > 0){
-            String[] parts = savedHandles.split("&");
-            for(int i = 0; i < parts.length; i++){
-                handleList.add(new Handle(parts[i]));
-            }
-        }
-
-        return handleList;
-    }*/
-
     @Provides @Singleton public Handles providesHandles(@SavedHandlesPreference StringPreference stringPreference){
         return new Handles(stringPreference);
     }
@@ -84,7 +70,6 @@ public class TurbineModule {
         return new HandleAdapter(application, handles.getHandleList());
     }
 
-    @Retention(RetentionPolicy.RUNTIME) @Qualifier public @interface HandleList {}
     @Retention(RetentionPolicy.RUNTIME) @Qualifier public @interface TweetList {}
     @Retention(RetentionPolicy.RUNTIME) @Qualifier public @interface SavedHandlesPreference{}
 
