@@ -61,9 +61,9 @@ public class SettingsView extends LinearLayout {
 
                 boolean newHandle = handles.addHandle(name);
 
-                if(!newHandle){
+                //if(!newHandle){
                     dataFuser.getTweetsForHandle(name);
-                }
+                //}
 
                 adapter.notifyDataSetChanged();
 

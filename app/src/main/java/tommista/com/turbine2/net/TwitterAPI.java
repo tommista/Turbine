@@ -16,7 +16,7 @@ public class TwitterAPI {
 
     public TwitterAPI(final Context context) {
 
-        reqInterceptor =    new RequestInterceptor() {
+        reqInterceptor = new RequestInterceptor() {
             @Override
             public void intercept(RequestFacade requestFacade) {
                 requestFacade.addHeader("Authorization", "Bearer " + context.getResources().getString(R.string.twitter_token));

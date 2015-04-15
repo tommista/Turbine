@@ -23,6 +23,7 @@ public class DataFuser {
     }
 
     public void getTweetsForHandle(final String handle){
+        Timber.i("Fetching tweets for user %s", handle);
         twitterAPI.timelineService.getUserTimeline(handle, 30, new Callback<List<Tweet>>() {
             @Override
             public void success(List<Tweet> tweetList, Response response) {

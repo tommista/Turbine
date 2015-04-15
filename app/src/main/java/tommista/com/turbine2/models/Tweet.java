@@ -39,7 +39,8 @@ public class Tweet implements Comparable<Tweet>{
 
     @Override
     public String toString(){
-        return tweetEntities.urlList[0].expandedUrl;
+        //return tweetEntities.urlList[0].expandedUrl;
+        return tweetId;
     }
 
     public int compareTo(Tweet tweet){

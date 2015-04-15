@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
-import timber.log.Timber;
 import tommista.com.turbine2.Handles;
 import tommista.com.turbine2.R;
 
@@ -27,7 +26,6 @@ public class HandleAdapter extends ArrayAdapter<String> {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         final String handle = getItem(position);
-        Timber.i("position=%d,handle=%s", position, handle);
 
         if(convertView == null){
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
