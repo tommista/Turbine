@@ -15,14 +15,29 @@ public class Handles {
         deserialize();
     }
 
-    public void addHandle(String handle){
-        handleList.add(handle);
-        serialize();
+    public boolean addHandle(String handle){
+        if(handleExists(handle)){
+            return false;
+        }else{
+            handleList.add(handle);
+            serialize();
+            return true;
+        }
+
     }
 
     public void removeHandle(String handle){
         handleList.remove(handle);
         serialize();
+    }
+
+    public boolean handleExists(String handle){
+        for(String str : handleList){
+            if(str.compareTo(handle) == 0){
+                return true;
+            }
+        }
+        return false;
     }
 
     public ArrayList<String> getHandleList(){

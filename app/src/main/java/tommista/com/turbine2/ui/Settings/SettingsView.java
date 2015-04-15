@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import javax.inject.Inject;
 
+import tommista.com.turbine2.DataFuser;
 import tommista.com.turbine2.Handles;
 import tommista.com.turbine2.R;
 import tommista.com.turbine2.TurbineApp;
@@ -27,6 +28,7 @@ public class SettingsView extends LinearLayout {
 
     @Inject Handles handles;
     @Inject HandleAdapter adapter;
+    @Inject DataFuser dataFuser;
 
     public SettingsView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -57,7 +59,11 @@ public class SettingsView extends LinearLayout {
                     name = "@" + name;
                 }
 
-                handles.addHandle(name);
+                boolean newHandle = handles.addHandle(name);
+
+                if(!newHandle){
+                    dataFuser.getTweetsForHandle(name);
+                }
 
                 adapter.notifyDataSetChanged();
 

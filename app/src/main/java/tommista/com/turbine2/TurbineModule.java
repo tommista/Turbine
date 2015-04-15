@@ -94,6 +94,10 @@ public class TurbineModule {
                 .build();
     }
 
+    @Provides @Singleton DataFuser providesDataFuser(TwitterAPI twitterAPI, Handles handles, Tweets tweets){
+        return new DataFuser(twitterAPI, handles, tweets);
+    }
+
     @Retention(RetentionPolicy.RUNTIME) @Qualifier public @interface SavedHandlesPreference{}
 
     static OkHttpClient createOkHttpClient(Application app) {
