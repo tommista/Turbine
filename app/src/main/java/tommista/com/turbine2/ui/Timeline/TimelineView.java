@@ -1,5 +1,6 @@
 package tommista.com.turbine2.ui.Timeline;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +8,7 @@ import android.content.IntentFilter;
 import android.graphics.Typeface;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -53,6 +55,12 @@ public class TimelineView extends LinearLayout{
 
         settingsButton = (Button) findViewById(R.id.settings_button);
         settingsButton.setTypeface(font);
+        settingsButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((Activity) context).setContentView(R.layout.settings_view);
+            }
+        });
 
         listView = (ListView) findViewById(R.id.main_list_view);
         listView.setAdapter(tweetAdapter);
