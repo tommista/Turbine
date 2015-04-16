@@ -28,10 +28,6 @@ import tommista.com.turbine2.util.StringPreference;
 
 import static android.content.Context.MODE_PRIVATE;
 
-/**
- * Created by tbrown on 2/5/15.
- */
-
 @Module(
         includes = {
         },

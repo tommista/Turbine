@@ -12,9 +12,6 @@ import tommista.com.turbine2.Handles;
 import tommista.com.turbine2.R;
 import tommista.com.turbine2.Tweets;
 
-/**
- * Created by tbrown on 2/9/15.
- */
 public class HandleAdapter extends ArrayAdapter<String> {
 
     private Handles handles;

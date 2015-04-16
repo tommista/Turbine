@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-import timber.log.Timber;
 import tommista.com.turbine2.models.Tweet;
 
 public class Tweets {

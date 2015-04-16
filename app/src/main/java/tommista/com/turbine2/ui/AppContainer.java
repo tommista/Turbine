@@ -5,9 +5,6 @@ import android.view.ViewGroup;
 
 import static butterknife.ButterKnife.findById;
 
-/**
- * Created by tbrown on 2/5/15.
- */
 public interface AppContainer {
     /** The root {@link android.view.ViewGroup} into which the activity should place its contents. */
     ViewGroup get(Activity activity);

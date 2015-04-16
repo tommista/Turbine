@@ -10,9 +10,6 @@ import java.util.Locale;
 
 import timber.log.Timber;
 
-/**
- * Created by tbrown on 2/13/15.
- */
 public class Tweet implements Comparable<Tweet>{
 
     public Tweet(Tweet tweet){
