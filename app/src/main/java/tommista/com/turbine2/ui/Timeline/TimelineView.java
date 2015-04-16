@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import javax.inject.Inject;
 
+import tommista.com.turbine2.DataFuser;
 import tommista.com.turbine2.R;
 import tommista.com.turbine2.TurbineApp;
 import tommista.com.turbine2.Tweets;
@@ -30,12 +31,14 @@ public class TimelineView extends LinearLayout{
 
     @Inject Tweets tweets;
     @Inject TweetAdapter tweetAdapter;
+    @Inject DataFuser dataFuser;
 
     public TimelineView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
         LocalBroadcastManager.getInstance(context).registerReceiver(newTweetReceiver, new IntentFilter(context.getResources().getString(R.string.added_tweet_intent)));
         TurbineApp.get(context).inject(this);
+        dataFuser.refresh();
     }
 
     @Override

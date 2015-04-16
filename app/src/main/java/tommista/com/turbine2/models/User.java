@@ -7,4 +7,7 @@ public class User {
     @SerializedName("profile_image_url")
     public String profileImageURL;
 
+    @SerializedName("name")
+    public String name;
+
 }

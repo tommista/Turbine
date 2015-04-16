@@ -32,6 +32,12 @@ public class DataFuser {
         this.tweets = tweets;
     }
 
+    public void refresh(){
+        for(String handle : handles.getHandleList()){
+            this.getTweetsForHandle(handle);
+        }
+    }
+
     public void getTweetsForHandle(final String handle){
         Timber.i("Fetching tweets for user %s", handle);
         twitterAPI.timelineService.getUserTimeline(handle, 30, new Callback<List<Tweet>>() {
@@ -47,7 +53,7 @@ public class DataFuser {
                             if(expandedURL.toLowerCase().contains("youtube") || expandedURL.toLowerCase().contains("spotify") || expandedURL.toLowerCase().contains("soundcloud")) {
                                 if(!tweets.tweetExists(tweet)){
                                     Tweet newTweet = new Tweet(tweet);
-                                    newTweet.screenName = handle;
+                                    newTweet.handle = handle;
                                     newTweet.goodUrl = expandedURL;
                                     tweets.addTweet(newTweet);
                                     sendAddTweetIntent();
@@ -68,7 +74,7 @@ public class DataFuser {
                                             if (!tweets.tweetExists(tweet)) {
 
                                                 Tweet newTweet = new Tweet(tweet);
-                                                newTweet.screenName = handle;
+                                                newTweet.handle = handle;
                                                 newTweet.goodUrl = url;
                                                 tweets.addTweet(newTweet);
                                                 sendAddTweetIntent();

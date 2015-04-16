@@ -52,10 +52,10 @@ public class TweetAdapter extends ArrayAdapter<Tweet>{
         });
 
         TextView twitterName = (TextView) convertView.findViewById(R.id.twitter_name);
-        twitterName.setText(tweet.screenName);
+        twitterName.setText(tweet.user.name);
 
         TextView handleName = (TextView) convertView.findViewById(R.id.twitter_handle);
-        handleName.setText(tweet.screenName);
+        handleName.setText(tweet.handle);
 
         TextView tweetText = (TextView) convertView.findViewById(R.id.tweet_text);
         tweetText.setText(tweet.tweetText);

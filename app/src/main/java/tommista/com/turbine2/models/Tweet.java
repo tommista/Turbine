@@ -11,7 +11,7 @@ public class Tweet implements Comparable<Tweet>{
         this.tweetId = tweet.tweetId;
         this.tweetText = tweet.tweetText;
         this.user = tweet.user;
-        this.screenName = tweet.screenName;
+        this.handle = tweet.handle;
         this.tweetEntities = tweet.tweetEntities;
         this.goodUrl = tweet.goodUrl;
         this.createdAt = tweet.createdAt;
@@ -32,7 +32,7 @@ public class Tweet implements Comparable<Tweet>{
     public TweetEntities tweetEntities;
 
     @SerializedName("screen_name")
-    public String screenName;
+    public String handle;
 
     @SerializedName("created_at")
     public String createdAt;
