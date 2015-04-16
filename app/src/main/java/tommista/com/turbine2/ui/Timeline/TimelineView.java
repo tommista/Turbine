@@ -20,10 +20,9 @@ import javax.inject.Inject;
 import tommista.com.turbine2.DataFuser;
 import tommista.com.turbine2.R;
 import tommista.com.turbine2.TurbineApp;
+import tommista.com.turbine2.TurbineModule;
 import tommista.com.turbine2.Tweets;
 import tommista.com.turbine2.adapters.TweetAdapter;
-
-import static tommista.com.turbine2.TurbineModule.IcomoonFont;
 
 public class TimelineView extends LinearLayout{
 
@@ -41,7 +40,8 @@ public class TimelineView extends LinearLayout{
 
     @Inject Tweets tweets;
     @Inject DataFuser dataFuser;
-    @Inject @IcomoonFont Typeface font;
+    @Inject @TurbineModule.IconFont
+    Typeface font;
     @Inject Picasso picasso;
 
     public TimelineView(Context context, AttributeSet attrs) {

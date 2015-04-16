@@ -110,12 +110,12 @@ public class TurbineModule {
         return new DataFuser(application, timelineService, unshortenService, handles, tweets);
     }
 
-    @Provides @Singleton @IcomoonFont Typeface providesIcomoonFont(Application application){
+    @Provides @Singleton @IconFont Typeface providesIcomoonFont(Application application){
         return Typeface.createFromAsset(application.getAssets(), "icomoon.ttf");
     }
 
     @Retention(RetentionPolicy.RUNTIME) @Qualifier public @interface SavedHandlesPreference{}
-    @Retention(RetentionPolicy.RUNTIME) @Qualifier public @interface IcomoonFont{}
+    @Retention(RetentionPolicy.RUNTIME) @Qualifier public @interface IconFont{}
 
     static OkHttpClient createOkHttpClient(Application app) {
         OkHttpClient client = new OkHttpClient();
