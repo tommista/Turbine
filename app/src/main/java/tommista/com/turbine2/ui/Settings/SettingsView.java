@@ -69,8 +69,11 @@ public class SettingsView extends LinearLayout {
                 else if(!name.startsWith("@")){
                     name = "@" + name;
                 }
+
+                handles.addHandle(name);
                 dataFuser.getTweetsForHandle(name);
                 adapter.notifyDataSetChanged();
+                newHandleEditText.setText("");
 
                 hideInputMethod(v);
             }
