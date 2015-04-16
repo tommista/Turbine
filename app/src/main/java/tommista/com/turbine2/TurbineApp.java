@@ -6,9 +6,6 @@ import android.content.Context;
 import dagger.ObjectGraph;
 import timber.log.Timber;
 
-/**
- * Created by tbrown on 2/5/15.
- */
 public class TurbineApp extends Application{
 
     private ObjectGraph objectGraph;

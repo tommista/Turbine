@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import timber.log.Timber;
 
-
 public class TurbineActivity extends Activity {
 
     @Override
@@ -17,28 +16,6 @@ public class TurbineActivity extends Activity {
 
         setContentView(R.layout.timeline_view);
     }
-
-
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_turbine, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.action_settings) {
-            setContentView(R.layout.settings_view);
-            return true;
-        }
-        else if(id == R.id.action_refresh){
-
-        }
-
-        return super.onOptionsItemSelected(item);
-    }*/
 
     @Override
     public void onBackPressed(){
