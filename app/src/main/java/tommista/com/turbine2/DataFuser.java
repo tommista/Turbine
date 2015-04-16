@@ -1,8 +1,6 @@
 package tommista.com.turbine2;
 
 import android.content.Context;
-import android.content.Intent;
-import android.support.v4.content.LocalBroadcastManager;
 
 import java.util.List;
 
@@ -56,7 +54,6 @@ public class DataFuser {
                                     newTweet.handle = handle;
                                     newTweet.goodUrl = expandedURL;
                                     tweets.addTweet(newTweet);
-                                    sendAddTweetIntent();
                                     Timber.i("added new tweet");
                                 }
                             }else{
@@ -77,7 +74,6 @@ public class DataFuser {
                                                 newTweet.handle = handle;
                                                 newTweet.goodUrl = url;
                                                 tweets.addTweet(newTweet);
-                                                sendAddTweetIntent();
                                                 Timber.i("added new tweet");
                                             }
                                         }
@@ -100,10 +96,5 @@ public class DataFuser {
                 Timber.i("Failure downloading timeline for %s.", handle);
             }
         });
-    }
-
-    private void sendAddTweetIntent(){
-        Intent intent = new Intent(context.getResources().getString(R.string.added_tweet_intent));
-        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 }

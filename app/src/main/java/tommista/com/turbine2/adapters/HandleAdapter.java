@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import tommista.com.turbine2.Handles;
 import tommista.com.turbine2.R;
+import tommista.com.turbine2.Tweets;
 
 /**
  * Created by tbrown on 2/9/15.
@@ -17,10 +18,12 @@ import tommista.com.turbine2.R;
 public class HandleAdapter extends ArrayAdapter<String> {
 
     private Handles handles;
+    private Tweets tweets;
 
-    public HandleAdapter(Context context, Handles handles) {
+    public HandleAdapter(Context context, Handles handles, Tweets tweets) {
         super(context, R.layout.handle_view , handles.getHandleList());
         this.handles = handles;
+        this.tweets = tweets;
     }
 
     @Override
@@ -38,6 +41,7 @@ public class HandleAdapter extends ArrayAdapter<String> {
             @Override
             public void onClick(View v) {
                 handles.removeHandle(handle);
+                tweets.removeTweetsByHandle(handle);
                 notifyDataSetChanged();
             }
         });

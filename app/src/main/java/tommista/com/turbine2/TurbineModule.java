@@ -61,8 +61,8 @@ public class TurbineModule {
         return new Handles(stringPreference);
     }
 
-    @Provides @Singleton public Tweets providesTweets(){
-        return new Tweets();
+    @Provides @Singleton public Tweets providesTweets(Application application){
+        return new Tweets(application);
     }
 
     @Provides @Singleton public TwitterAPI providesTwitterAPI(Application application){
@@ -77,8 +77,8 @@ public class TurbineModule {
         return new StringPreference(preferences, application.getResources().getString(R.string.saved_handles_list_key));
     }
 
-    @Provides public HandleAdapter providesHandleAdapter(Application application, Handles handles){
-        return new HandleAdapter(application, handles);
+    @Provides public HandleAdapter providesHandleAdapter(Application application, Handles handles, Tweets tweets){
+        return new HandleAdapter(application, handles, tweets);
     }
 
     @Provides public TweetAdapter providesTweetAdapter(Application application, Tweets tweets, Picasso picasso){

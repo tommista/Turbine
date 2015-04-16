@@ -12,6 +12,6 @@
     <string name="twitter_api_endpoint">https://api.twitter.com</string>
     <string name="settings_button_text">\ue994</string>
 
-    <string name="added_tweet_intent">added_tweet_intent</string>
+    <string name="tweets_changed_intent">tweets_changed_intent</string>
 
 </resources>

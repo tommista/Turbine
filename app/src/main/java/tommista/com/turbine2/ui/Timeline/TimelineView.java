@@ -44,7 +44,7 @@ public class TimelineView extends LinearLayout{
     public TimelineView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
-        LocalBroadcastManager.getInstance(context).registerReceiver(newTweetReceiver, new IntentFilter(context.getResources().getString(R.string.added_tweet_intent)));
+        LocalBroadcastManager.getInstance(context).registerReceiver(newTweetReceiver, new IntentFilter(context.getResources().getString(R.string.tweets_changed_intent)));
         TurbineApp.get(context).inject(this);
         dataFuser.refresh();
     }
