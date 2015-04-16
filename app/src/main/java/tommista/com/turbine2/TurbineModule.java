@@ -61,10 +61,6 @@ public class TurbineModule {
         return new Tweets(application);
     }
 
-    /*@Provides @Singleton public TwitterAPI providesTwitterAPI(Application application){
-        return new TwitterAPI(application.getApplicationContext());
-    }*/
-
     @Provides @Singleton TimelineService providesTimelineService(final Application application){
 
         RequestInterceptor reqInterceptor = new RequestInterceptor() {

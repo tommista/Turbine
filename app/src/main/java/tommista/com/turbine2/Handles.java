@@ -7,10 +7,10 @@ import tommista.com.turbine2.util.StringPreference;
 public class Handles {
 
     private ArrayList<String> handleList;
-    private StringPreference stringPreference;
+    private StringPreference serializedHandlesPreference;
 
-    public Handles(StringPreference stringPreference){
-        this.stringPreference = stringPreference;
+    public Handles(StringPreference serializedHandlesPreference){
+        this.serializedHandlesPreference = serializedHandlesPreference;
         handleList = new ArrayList<>();
         deserialize();
     }
@@ -54,11 +54,11 @@ public class Handles {
             }
         }
 
-        stringPreference.set(handlesCombo);
+        serializedHandlesPreference.set(handlesCombo);
     }
 
     private void deserialize(){
-        String savedHandles = stringPreference.get();
+        String savedHandles = serializedHandlesPreference.get();
         if(savedHandles != null && savedHandles.length() > 0){
             String[] parts = savedHandles.split("&");
             for(int i = 0; i < parts.length; i++){
