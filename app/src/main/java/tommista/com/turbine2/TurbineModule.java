@@ -21,7 +21,6 @@ import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 import timber.log.Timber;
 import tommista.com.turbine2.adapters.HandleAdapter;
-import tommista.com.turbine2.adapters.TweetAdapter;
 import tommista.com.turbine2.net.TimelineService;
 import tommista.com.turbine2.net.UnshortenService;
 import tommista.com.turbine2.ui.Settings.SettingsView;
@@ -99,10 +98,6 @@ public class TurbineModule {
 
     @Provides public HandleAdapter providesHandleAdapter(Application application, Handles handles, Tweets tweets){
         return new HandleAdapter(application, handles, tweets);
-    }
-
-    @Provides public TweetAdapter providesTweetAdapter(Application application, Tweets tweets, Picasso picasso){
-        return new TweetAdapter(application, tweets, picasso);
     }
 
     @Provides @Singleton OkHttpClient provideOkHttpClient(Application app) {

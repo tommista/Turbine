@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import com.squareup.picasso.Picasso;
+
 import javax.inject.Inject;
 
 import tommista.com.turbine2.DataFuser;
@@ -37,15 +39,18 @@ public class TimelineView extends LinearLayout{
     };
 
     @Inject Tweets tweets;
-    @Inject TweetAdapter tweetAdapter;
+    private TweetAdapter tweetAdapter;
     @Inject DataFuser dataFuser;
     @Inject @IcomoonFont Typeface font;
+    @Inject Picasso picasso;
 
     public TimelineView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
         LocalBroadcastManager.getInstance(context).registerReceiver(newTweetReceiver, new IntentFilter(context.getResources().getString(R.string.tweets_changed_intent)));
         TurbineApp.get(context).inject(this);
+
+        tweetAdapter = new TweetAdapter(context, tweets, picasso);
         dataFuser.refresh();
     }
 
