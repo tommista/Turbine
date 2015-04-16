@@ -15,7 +15,6 @@ import tommista.com.turbine2.R;
 import tommista.com.turbine2.TurbineApp;
 import tommista.com.turbine2.Tweets;
 import tommista.com.turbine2.adapters.TweetAdapter;
-import tommista.com.turbine2.net.TwitterAPI;
 
 public class TimelineView extends LinearLayout{
 
@@ -29,7 +28,6 @@ public class TimelineView extends LinearLayout{
         }
     };
 
-    @Inject TwitterAPI twitterAPI;
     @Inject Tweets tweets;
     @Inject TweetAdapter tweetAdapter;
 
