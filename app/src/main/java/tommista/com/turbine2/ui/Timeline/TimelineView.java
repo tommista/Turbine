@@ -30,6 +30,7 @@ public class TimelineView extends LinearLayout{
     private Context context;
     private ListView listView;
     private Button settingsButton;
+    private TweetAdapter tweetAdapter;
 
     private BroadcastReceiver newTweetReceiver = new BroadcastReceiver() {
         @Override
@@ -39,7 +40,6 @@ public class TimelineView extends LinearLayout{
     };
 
     @Inject Tweets tweets;
-    private TweetAdapter tweetAdapter;
     @Inject DataFuser dataFuser;
     @Inject @IcomoonFont Typeface font;
     @Inject Picasso picasso;

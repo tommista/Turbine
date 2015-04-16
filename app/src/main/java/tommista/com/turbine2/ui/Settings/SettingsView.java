@@ -16,6 +16,7 @@ import tommista.com.turbine2.DataFuser;
 import tommista.com.turbine2.Handles;
 import tommista.com.turbine2.R;
 import tommista.com.turbine2.TurbineApp;
+import tommista.com.turbine2.Tweets;
 import tommista.com.turbine2.adapters.HandleAdapter;
 
 import static tommista.com.turbine2.TurbineModule.IcomoonFont;
@@ -26,9 +27,10 @@ public class SettingsView extends LinearLayout {
     private Button addButton;
     private EditText newHandleEditText;
     private Button refreshButton;
+    private HandleAdapter adapter;
 
     @Inject Handles handles;
-    @Inject HandleAdapter adapter;
+    @Inject Tweets tweets;
     @Inject DataFuser dataFuser;
     @Inject @IcomoonFont Typeface icomoonFont;
 
@@ -36,6 +38,7 @@ public class SettingsView extends LinearLayout {
         super(context, attrs);
         this.context = context;
         TurbineApp.get(context).inject(this);
+        adapter = new HandleAdapter(context, handles, tweets);
     }
 
     @Override
