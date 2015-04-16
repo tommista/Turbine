@@ -68,7 +68,7 @@ public class Tweet implements Comparable<Tweet>{
         if(myDate == null || tweetDate == null){
             return 0;
         } else{
-            return myDate.compareTo(tweetDate);
+            return myDate.compareTo(tweetDate) * -1; // Need to reverse the natural ordering of Dates.
         }
     }
 
