@@ -99,8 +99,8 @@ public class TurbineModule {
                 .build();
     }
 
-    @Provides @Singleton DataFuser providesDataFuser(TwitterAPI twitterAPI, Handles handles, Tweets tweets){
-        return new DataFuser(twitterAPI, handles, tweets);
+    @Provides @Singleton DataFuser providesDataFuser(TwitterAPI twitterAPI, UnshortenAPI unshortenAPI, Handles handles, Tweets tweets){
+        return new DataFuser(twitterAPI, unshortenAPI, handles, tweets);
     }
 
     @Retention(RetentionPolicy.RUNTIME) @Qualifier public @interface SavedHandlesPreference{}
