@@ -20,11 +20,13 @@ public class TweetAdapter extends ArrayAdapter<Tweet>{
 
     private Tweets tweets;
     private Context context;
+    private Picasso picasso;
 
-    public TweetAdapter(Context context, Tweets tweets) {
+    public TweetAdapter(Context context, Tweets tweets, Picasso picasso) {
         super(context, R.layout.tweet_view , tweets.getSortedList());
         this.tweets = tweets;
         this.context = context;
+        this.picasso = picasso;
     }
 
     @Override
@@ -37,7 +39,7 @@ public class TweetAdapter extends ArrayAdapter<Tweet>{
         }
 
         ImageView imageView = (ImageView) convertView.findViewById(R.id.image_view);
-        Picasso.with(context).load(tweet.user.profileImageURL).into(imageView, new Callback() {
+        picasso.with(context).load(tweet.user.profileImageURL).into(imageView, new Callback() {
             @Override
             public void onSuccess() {
                 Timber.i("picasso success for url: %s", tweet.user.profileImageURL);

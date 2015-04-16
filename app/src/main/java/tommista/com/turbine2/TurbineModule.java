@@ -80,8 +80,8 @@ public class TurbineModule {
         return new HandleAdapter(application, handles);
     }
 
-    @Provides public TweetAdapter providesTweetAdapter(Application application, Tweets tweets){
-        return new TweetAdapter(application, tweets);
+    @Provides public TweetAdapter providesTweetAdapter(Application application, Tweets tweets, Picasso picasso){
+        return new TweetAdapter(application, tweets, picasso);
     }
 
     @Provides @Singleton OkHttpClient provideOkHttpClient(Application app) {
