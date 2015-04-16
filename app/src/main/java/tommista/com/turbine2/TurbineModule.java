@@ -17,11 +17,12 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import retrofit.RestAdapter;
 import timber.log.Timber;
 import tommista.com.turbine2.adapters.HandleAdapter;
 import tommista.com.turbine2.adapters.TweetAdapter;
 import tommista.com.turbine2.net.TwitterAPI;
-import tommista.com.turbine2.net.UnshortenAPI;
+import tommista.com.turbine2.net.services.UnshortenService;
 import tommista.com.turbine2.ui.Settings.SettingsView;
 import tommista.com.turbine2.ui.Timeline.TimelineView;
 import tommista.com.turbine2.util.StringPreference;
@@ -65,8 +66,17 @@ public class TurbineModule {
         return new TwitterAPI(application.getApplicationContext());
     }
 
-    @Provides @Singleton public UnshortenAPI providesUnshortenAPI(Application application){
+    /*@Provides @Singleton public UnshortenAPI providesUnshortenAPI(Application application){
         return new UnshortenAPI(application);
+    }*/
+
+    @Provides @Singleton UnshortenService providesUnshortenService(Application application){
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setEndpoint(application.getResources().getString(R.string.unshorten_api_endpoint))
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .build();
+
+        return restAdapter.create(UnshortenService.class);
     }
 
     @Provides @Singleton @SavedHandlesPreference public StringPreference providesSavedHandlesPreference(Application application, SharedPreferences preferences){
@@ -96,8 +106,8 @@ public class TurbineModule {
                 .build();
     }
 
-    @Provides @Singleton DataFuser providesDataFuser(Application application, TwitterAPI twitterAPI, UnshortenAPI unshortenAPI, Handles handles, Tweets tweets){
-        return new DataFuser(application, twitterAPI, unshortenAPI, handles, tweets);
+    @Provides @Singleton DataFuser providesDataFuser(Application application, TwitterAPI twitterAPI, UnshortenService unshortenService, Handles handles, Tweets tweets){
+        return new DataFuser(application, twitterAPI, unshortenService, handles, tweets);
     }
 
     @Provides @Singleton @IcomoonFont Typeface providesIcomoonFont(Application application){

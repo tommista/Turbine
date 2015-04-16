@@ -11,21 +11,21 @@ import timber.log.Timber;
 import tommista.com.turbine2.models.Tweet;
 import tommista.com.turbine2.models.UnshortenResponse;
 import tommista.com.turbine2.net.TwitterAPI;
-import tommista.com.turbine2.net.UnshortenAPI;
+import tommista.com.turbine2.net.services.UnshortenService;
 
 public class DataFuser {
 
     private Context context;
     private TwitterAPI twitterAPI;
-    private UnshortenAPI unshortenAPI;
+    private UnshortenService unshortenService;
     private Handles handles;
     private Tweets tweets;
 
 
-    public DataFuser(Context context, TwitterAPI twitterAPI, UnshortenAPI unshortenAPI, Handles handles, Tweets tweets){
+    public DataFuser(Context context, TwitterAPI twitterAPI, UnshortenService unshortenService, Handles handles, Tweets tweets){
         this.context = context;
         this.twitterAPI = twitterAPI;
-        this.unshortenAPI = unshortenAPI;
+        this.unshortenService = unshortenService;
         this.handles = handles;
         this.tweets = tweets;
     }
@@ -56,7 +56,7 @@ public class DataFuser {
                                     tweets.addTweet(newTweet);
                                 }
                             }else{
-                                unshortenAPI.extensionService.unshortenURL(expandedURL, context.getResources().getString(R.string.unshorten_api_key), "json", new Callback<UnshortenResponse>() {
+                                unshortenService.unshortenURL(expandedURL, context.getResources().getString(R.string.unshorten_api_key), "json", new Callback<UnshortenResponse>() {
                                     @Override
                                     public void success(UnshortenResponse unshortenResponse, Response response) {
                                         String url = unshortenResponse.fullUrl;
