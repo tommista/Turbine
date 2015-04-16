@@ -47,11 +47,4 @@ public class Tweet implements Comparable<Tweet>{
         return 0; //TBD
     }
 
-    private class TweetEntities {
-
-        @SerializedName("urls")
-        public TweetUrls urlList[];
-
-    }
-
 }

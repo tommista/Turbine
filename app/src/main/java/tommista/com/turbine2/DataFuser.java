@@ -30,7 +30,12 @@ public class DataFuser {
                 Timber.i("Successfully downloaded timeline for %s.", handle);
 
                 for(Tweet tweet : tweetList){
-                    Timber.i(tweet.toString());
+                    if(tweet.tweetEntities.urlList.length > 0){
+                        String expandedURL = tweet.tweetEntities.urlList[0].expandedUrl;
+                        if(expandedURL != null && expandedURL.length() > 0){
+
+                        }
+                    }
                 }
             }
 
