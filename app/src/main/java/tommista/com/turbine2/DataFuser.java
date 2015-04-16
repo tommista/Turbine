@@ -10,21 +10,21 @@ import retrofit.client.Response;
 import timber.log.Timber;
 import tommista.com.turbine2.models.Tweet;
 import tommista.com.turbine2.models.UnshortenResponse;
-import tommista.com.turbine2.net.TwitterAPI;
-import tommista.com.turbine2.net.services.UnshortenService;
+import tommista.com.turbine2.net.TimelineService;
+import tommista.com.turbine2.net.UnshortenService;
 
 public class DataFuser {
 
     private Context context;
-    private TwitterAPI twitterAPI;
+    private TimelineService timelineService;
     private UnshortenService unshortenService;
     private Handles handles;
     private Tweets tweets;
 
 
-    public DataFuser(Context context, TwitterAPI twitterAPI, UnshortenService unshortenService, Handles handles, Tweets tweets){
+    public DataFuser(Context context, TimelineService timelineService, UnshortenService unshortenService, Handles handles, Tweets tweets){
         this.context = context;
-        this.twitterAPI = twitterAPI;
+        this.timelineService = timelineService;
         this.unshortenService = unshortenService;
         this.handles = handles;
         this.tweets = tweets;
@@ -38,7 +38,7 @@ public class DataFuser {
 
     public void getTweetsForHandle(final String handle){
         Timber.i("Fetching tweets for user %s", handle);
-        twitterAPI.timelineService.getUserTimeline(handle, 30, new Callback<List<Tweet>>() {
+        timelineService.getUserTimeline(handle, 30, new Callback<List<Tweet>>() {
             @Override
             public void success(List<Tweet> tweetList, Response response) {
                 Timber.i("Successfully downloaded timeline for %s.", handle);

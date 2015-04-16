@@ -1,4 +1,4 @@
-package tommista.com.turbine2.net.services;
+package tommista.com.turbine2.net;
 
 import java.util.List;
 
