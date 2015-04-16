@@ -1,6 +1,10 @@
 package tommista.com.turbine2.ui.Timeline;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -18,6 +22,13 @@ public class TimelineView extends LinearLayout{
     private Context context;
     private ListView listView;
 
+    private BroadcastReceiver newTweetReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            tweetAdapter.notifyDataSetChanged();
+        }
+    };
+
     @Inject TwitterAPI twitterAPI;
     @Inject Tweets tweets;
     @Inject TweetAdapter tweetAdapter;
@@ -25,6 +36,7 @@ public class TimelineView extends LinearLayout{
     public TimelineView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
+        LocalBroadcastManager.getInstance(context).registerReceiver(newTweetReceiver, new IntentFilter(context.getResources().getString(R.string.added_tweet_intent)));
         TurbineApp.get(context).inject(this);
     }
 
