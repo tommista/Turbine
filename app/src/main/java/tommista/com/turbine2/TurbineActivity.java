@@ -1,14 +1,12 @@
 package tommista.com.turbine2;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import timber.log.Timber;
 
 
-public class TurbineActivity extends ActionBarActivity {
+public class TurbineActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +19,7 @@ public class TurbineActivity extends ActionBarActivity {
     }
 
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_turbine, menu);
         return true;
@@ -40,7 +38,7 @@ public class TurbineActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     @Override
     public void onBackPressed(){

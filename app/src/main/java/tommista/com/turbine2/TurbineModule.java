@@ -2,6 +2,7 @@ package tommista.com.turbine2;
 
 import android.app.Application;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.net.Uri;
 
 import com.squareup.okhttp.OkHttpClient;
@@ -103,7 +104,12 @@ public class TurbineModule {
         return new DataFuser(application, twitterAPI, unshortenAPI, handles, tweets);
     }
 
+    @Provides @Singleton @IcomoonFont Typeface providesIcomoonFont(Application application){
+        return Typeface.createFromAsset(application.getAssets(), "icomoon.ttf");
+    }
+
     @Retention(RetentionPolicy.RUNTIME) @Qualifier public @interface SavedHandlesPreference{}
+    @Retention(RetentionPolicy.RUNTIME) @Qualifier public @interface IcomoonFont{}
 
     static OkHttpClient createOkHttpClient(Application app) {
         OkHttpClient client = new OkHttpClient();

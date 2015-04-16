@@ -4,8 +4,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Typeface;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.AttributeSet;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
@@ -17,10 +19,13 @@ import tommista.com.turbine2.TurbineApp;
 import tommista.com.turbine2.Tweets;
 import tommista.com.turbine2.adapters.TweetAdapter;
 
+import static tommista.com.turbine2.TurbineModule.IcomoonFont;
+
 public class TimelineView extends LinearLayout{
 
     private Context context;
     private ListView listView;
+    private Button settingsButton;
 
     private BroadcastReceiver newTweetReceiver = new BroadcastReceiver() {
         @Override
@@ -32,6 +37,7 @@ public class TimelineView extends LinearLayout{
     @Inject Tweets tweets;
     @Inject TweetAdapter tweetAdapter;
     @Inject DataFuser dataFuser;
+    @Inject @IcomoonFont Typeface font;
 
     public TimelineView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -44,6 +50,9 @@ public class TimelineView extends LinearLayout{
     @Override
     protected void onFinishInflate(){
         super.onFinishInflate();
+
+        settingsButton = (Button) findViewById(R.id.settings_button);
+        settingsButton.setTypeface(font);
 
         listView = (ListView) findViewById(R.id.main_list_view);
         listView.setAdapter(tweetAdapter);
