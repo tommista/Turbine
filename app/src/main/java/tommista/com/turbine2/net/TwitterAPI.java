@@ -8,7 +8,6 @@ import tommista.com.turbine2.R;
 import tommista.com.turbine2.net.services.TimelineService;
 
 public class TwitterAPI {
-    private static final String SERVER_ADDRESS = "https://api.twitter.com";
     private final RestAdapter restAdapter;
     private RequestInterceptor reqInterceptor;
 
@@ -24,7 +23,7 @@ public class TwitterAPI {
         };
 
         restAdapter = new RestAdapter.Builder()
-                .setEndpoint(SERVER_ADDRESS)
+                .setEndpoint(context.getResources().getString(R.string.twitter_api_endpoint))
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setRequestInterceptor(reqInterceptor)
                 .build();

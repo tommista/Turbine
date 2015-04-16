@@ -20,6 +20,7 @@ import timber.log.Timber;
 import tommista.com.turbine2.adapters.HandleAdapter;
 import tommista.com.turbine2.adapters.TweetAdapter;
 import tommista.com.turbine2.net.TwitterAPI;
+import tommista.com.turbine2.net.UnshortenAPI;
 import tommista.com.turbine2.ui.Settings.SettingsView;
 import tommista.com.turbine2.ui.Timeline.TimelineView;
 import tommista.com.turbine2.util.StringPreference;
@@ -65,6 +66,10 @@ public class TurbineModule {
 
     @Provides @Singleton public TwitterAPI providesTwitterAPI(Application application){
         return new TwitterAPI(application.getApplicationContext());
+    }
+
+    @Provides @Singleton public UnshortenAPI providesUnshortenAPI(Application application){
+        return new UnshortenAPI(application);
     }
 
     @Provides @Singleton @SavedHandlesPreference public StringPreference providesSavedHandlesPreference(Application application, SharedPreferences preferences){

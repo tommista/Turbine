@@ -8,5 +8,7 @@
     <string name="add_button_text">Add</string>
     <string name="delete_button_text">Delete</string>
     <string name="saved_handles_list_key">savedHandlesList</string>
+    <string name="unshorten_api_endpoint">http://api.unshorten.it</string>
+    <string name="twitter_api_endpoint">https://api.twitter.com</string>
 
 </resources>
