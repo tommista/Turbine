@@ -11,4 +11,6 @@
     <string name="unshorten_api_endpoint">http://api.unshorten.it</string>
     <string name="twitter_api_endpoint">https://api.twitter.com</string>
 
+    <string name="added_tweet_intent">added_tweet_intent</string>
+
 </resources>
