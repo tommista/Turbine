@@ -1,6 +1,7 @@
 package tommista.com.turbine2.ui.Settings;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -17,18 +18,19 @@ import tommista.com.turbine2.R;
 import tommista.com.turbine2.TurbineApp;
 import tommista.com.turbine2.adapters.HandleAdapter;
 
-/**
- * Created by tbrown on 2/9/15.
- */
+import static tommista.com.turbine2.TurbineModule.IcomoonFont;
+
 public class SettingsView extends LinearLayout {
 
     private Context context;
     private Button addButton;
     private EditText newHandleEditText;
+    private Button refreshButton;
 
     @Inject Handles handles;
     @Inject HandleAdapter adapter;
     @Inject DataFuser dataFuser;
+    @Inject @IcomoonFont Typeface icomoonFont;
 
     public SettingsView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -41,6 +43,15 @@ public class SettingsView extends LinearLayout {
         super.onFinishInflate();
 
         final ListView listView = (ListView) this.findViewById(R.id.listview);
+
+        refreshButton = (Button) findViewById(R.id.refresh_button);
+        refreshButton.setTypeface(icomoonFont);
+        refreshButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dataFuser.refresh();
+            }
+        });
 
         addButton = (Button) this.findViewById(R.id.add_button);
         newHandleEditText = (EditText) this.findViewById(R.id.edit_text);
@@ -58,13 +69,7 @@ public class SettingsView extends LinearLayout {
                 else if(!name.startsWith("@")){
                     name = "@" + name;
                 }
-
-                boolean newHandle = handles.addHandle(name);
-
-                //if(!newHandle){
-                    dataFuser.getTweetsForHandle(name);
-                //}
-
+                dataFuser.getTweetsForHandle(name);
                 adapter.notifyDataSetChanged();
 
                 hideInputMethod(v);
