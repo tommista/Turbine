@@ -25,7 +25,6 @@ public class Tweets {
 
     public void addTweet(Tweet tweet){
         tweetMap.put(tweet.tweetId, tweet);
-        Timber.i("@@@@ " + tweet.toString());
         sortedList.add(tweet);
         sort();
         sendTweetsChangedIntent();

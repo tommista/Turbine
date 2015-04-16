@@ -62,7 +62,7 @@ public class Tweet implements Comparable<Tweet>{
             tweetDate = format.parse(tweet.createdAt);
 
         } catch(ParseException e){
-            Timber.i("#### error");
+            Timber.i("Error parsing dates: %s and %s", this.createdAt, tweet.createdAt);
         }
 
         if(myDate == null || tweetDate == null){
