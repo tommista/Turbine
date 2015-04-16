@@ -41,51 +41,7 @@ public class DataFuser {
         timelineService.getUserTimeline(handle, 30, new Callback<List<Tweet>>() {
             @Override
             public void success(List<Tweet> tweetList, Response response) {
-                Timber.i("Successfully downloaded timeline for %s.", handle);
-
-                for(final Tweet tweet : tweetList){
-                    if(tweet.tweetEntities.urlList.length > 0){
-                        String expandedURL = tweet.tweetEntities.urlList[0].expandedUrl;
-                        if(expandedURL != null && expandedURL.length() > 0){
-
-                            if(expandedURL.toLowerCase().contains("youtube") || expandedURL.toLowerCase().contains("spotify") || expandedURL.toLowerCase().contains("soundcloud")) {
-                                if(!tweets.tweetExists(tweet)){
-                                    Tweet newTweet = new Tweet(tweet);
-                                    newTweet.handle = handle;
-                                    newTweet.goodUrl = expandedURL;
-                                    tweets.addTweet(newTweet);
-                                }
-                            }else{
-                                unshortenService.unshortenURL(expandedURL, context.getResources().getString(R.string.unshorten_api_key), "json", new Callback<UnshortenResponse>() {
-                                    @Override
-                                    public void success(UnshortenResponse unshortenResponse, Response response) {
-                                        String url = unshortenResponse.fullUrl;
-
-                                        if (url == null) {
-                                            return;
-                                        }
-
-                                        if (url.toLowerCase().contains("youtube") || url.toLowerCase().contains("spotify") || url.toLowerCase().contains("soundcloud")) {
-                                            if (!tweets.tweetExists(tweet)) {
-
-                                                Tweet newTweet = new Tweet(tweet);
-                                                newTweet.handle = handle;
-                                                newTweet.goodUrl = url;
-                                                tweets.addTweet(newTweet);
-                                            }
-                                        }
-                                    }
-
-                                    @Override
-                                    public void failure(RetrofitError error) {
-
-                                    }
-                                });
-                            }
-
-                        }
-                    }
-                }
+                successfullyRetrievedTweetsForUser(handle, tweetList);
             }
 
             @Override
@@ -93,5 +49,65 @@ public class DataFuser {
                 Timber.i("Failure downloading timeline for %s.", handle);
             }
         });
+    }
+
+    private void successfullyRetrievedTweetsForUser(final String handle, List<Tweet> tweetList){
+        Timber.i("Successfully downloaded timeline for %s.", handle);
+
+        for(final Tweet tweet : tweetList){
+            if(tweet.tweetEntities.urlList.length > 0){
+                final String expandedURL = tweet.tweetEntities.urlList[0].expandedUrl;
+                if(expandedURL != null && expandedURL.length() > 0){
+
+                    if(urlContainsTerms(expandedURL)) {
+                        if(!tweets.tweetExists(tweet)){
+                            Tweet newTweet = new Tweet(tweet);
+                            newTweet.handle = handle;
+                            newTweet.goodUrl = expandedURL;
+                            tweets.addTweet(newTweet);
+                        }
+                    }else{
+                        unshortenURL(expandedURL, handle, tweet);
+                    }
+
+                }
+            }
+        }
+    }
+
+    private void successfullyUnshortenedURL(final String handle, Tweet tweet, UnshortenResponse unshortenResponse){
+        String url = unshortenResponse.fullUrl;
+
+        if (url == null) {
+            return;
+        }
+
+        if (urlContainsTerms(url)) {
+            if (!tweets.tweetExists(tweet)) {
+
+                Tweet newTweet = new Tweet(tweet);
+                newTweet.handle = handle;
+                newTweet.goodUrl = url;
+                tweets.addTweet(newTweet);
+            }
+        }
+    }
+
+    private void unshortenURL(final String expandedURL, final String handle, final Tweet tweet){
+        unshortenService.unshortenURL(expandedURL, context.getResources().getString(R.string.unshorten_api_key), "json", new Callback<UnshortenResponse>() {
+            @Override
+            public void success(UnshortenResponse unshortenResponse, Response response) {
+                successfullyUnshortenedURL(handle, tweet, unshortenResponse);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Timber.i("Failure unshortening url: " + expandedURL);
+            }
+        });
+    }
+
+    private boolean urlContainsTerms(String url){
+        return (url.toLowerCase().contains("youtube") || url.toLowerCase().contains("spotify") || url.toLowerCase().contains("soundcloud"));
     }
 }
