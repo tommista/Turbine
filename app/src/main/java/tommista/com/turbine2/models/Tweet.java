@@ -2,6 +2,14 @@ package tommista.com.turbine2.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import timber.log.Timber;
+
 /**
  * Created by tbrown on 2/13/15.
  */
@@ -40,11 +48,28 @@ public class Tweet implements Comparable<Tweet>{
     @Override
     public String toString(){
         //return tweetEntities.urlList[0].expandedUrl;
-        return tweetId;
+        return createdAt;
     }
 
     public int compareTo(Tweet tweet){
-        return 0; //TBD
+        DateFormat format = new SimpleDateFormat("EEEE MMMM d H:m:s Z y", Locale.ENGLISH);
+
+        Date myDate = null;
+        Date tweetDate = null;
+
+        try{
+            myDate = format.parse(this.createdAt);
+            tweetDate = format.parse(tweet.createdAt);
+
+        } catch(ParseException e){
+            Timber.i("#### error");
+        }
+
+        if(myDate == null || tweetDate == null){
+            return 0;
+        } else{
+            return myDate.compareTo(tweetDate);
+        }
     }
 
 }

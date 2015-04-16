@@ -54,14 +54,12 @@ public class DataFuser {
                                     newTweet.handle = handle;
                                     newTweet.goodUrl = expandedURL;
                                     tweets.addTweet(newTweet);
-                                    Timber.i("added new tweet");
                                 }
                             }else{
                                 unshortenAPI.extensionService.unshortenURL(expandedURL, context.getResources().getString(R.string.unshorten_api_key), "json", new Callback<UnshortenResponse>() {
                                     @Override
                                     public void success(UnshortenResponse unshortenResponse, Response response) {
                                         String url = unshortenResponse.fullUrl;
-                                        Timber.i("successfully shortened url: " + url);
 
                                         if (url == null) {
                                             return;
@@ -74,7 +72,6 @@ public class DataFuser {
                                                 newTweet.handle = handle;
                                                 newTweet.goodUrl = url;
                                                 tweets.addTweet(newTweet);
-                                                Timber.i("added new tweet");
                                             }
                                         }
                                     }

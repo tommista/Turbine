@@ -24,7 +24,7 @@ public class TwitterAPI {
 
         restAdapter = new RestAdapter.Builder()
                 .setEndpoint(context.getResources().getString(R.string.twitter_api_endpoint))
-                .setLogLevel(RestAdapter.LogLevel.FULL)
+                //.setLogLevel(RestAdapter.LogLevel.FULL)
                 .setRequestInterceptor(reqInterceptor)
                 .build();
 

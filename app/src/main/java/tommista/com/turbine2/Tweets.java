@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
+import timber.log.Timber;
 import tommista.com.turbine2.models.Tweet;
 
 public class Tweets {
@@ -24,6 +25,7 @@ public class Tweets {
 
     public void addTweet(Tweet tweet){
         tweetMap.put(tweet.tweetId, tweet);
+        Timber.i("@@@@ " + tweet.toString());
         sortedList.add(tweet);
         sort();
         sendTweetsChangedIntent();
