@@ -14,9 +14,10 @@ import tommista.com.turbine2.DataFuser;
 import tommista.com.turbine2.Handles;
 import tommista.com.turbine2.R;
 import tommista.com.turbine2.TurbineApp;
-import tommista.com.turbine2.TurbineModule;
 import tommista.com.turbine2.Tweets;
 import tommista.com.turbine2.adapters.HandleAdapter;
+
+import static tommista.com.turbine2.TurbineModule.IconFont;
 
 public class SettingsView extends LinearLayout {
 
@@ -29,7 +30,7 @@ public class SettingsView extends LinearLayout {
   @Inject Handles handles;
   @Inject Tweets tweets;
   @Inject DataFuser dataFuser;
-  @Inject @TurbineModule.IconFont Typeface icomoonFont;
+  @Inject @IconFont Typeface icomoonFont;
 
   public SettingsView(Context context, AttributeSet attrs) {
     super(context, attrs);

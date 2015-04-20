@@ -17,9 +17,10 @@ import javax.inject.Inject;
 import tommista.com.turbine2.DataFuser;
 import tommista.com.turbine2.R;
 import tommista.com.turbine2.TurbineApp;
-import tommista.com.turbine2.TurbineModule;
 import tommista.com.turbine2.Tweets;
 import tommista.com.turbine2.adapters.TweetAdapter;
+
+import static tommista.com.turbine2.TurbineModule.IconFont;
 
 public class TimelineView extends LinearLayout {
 
@@ -31,13 +32,13 @@ public class TimelineView extends LinearLayout {
   private BroadcastReceiver newTweetReceiver = new BroadcastReceiver() {
     @Override
     public void onReceive(Context context, Intent intent) {
-      tweetAdapter.notifyDataSetChanged();
+      receivedNewTweetIntent(intent);
     }
   };
 
   @Inject Tweets tweets;
   @Inject DataFuser dataFuser;
-  @Inject @TurbineModule.IconFont Typeface font;
+  @Inject @IconFont Typeface font;
   @Inject Picasso picasso;
 
   public TimelineView(Context context, AttributeSet attrs) {
@@ -67,5 +68,9 @@ public class TimelineView extends LinearLayout {
 
     listView = (ListView) findViewById(R.id.main_list_view);
     listView.setAdapter(tweetAdapter);
+  }
+
+  private void receivedNewTweetIntent(Intent intent){
+    tweetAdapter.notifyDataSetChanged();
   }
 }
