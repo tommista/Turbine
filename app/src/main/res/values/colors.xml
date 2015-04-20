@@ -9,4 +9,6 @@
   <!-- Specific piece colors !-->
   <color name="textViewStroke">#DDDDDD</color>
   <color name="addButtonStroke">#999999</color>
+  <color name="handleViewBackground">#DEDEDE</color>
+  <color name="handleViewBorder">#CFCFCF</color>
 </resources>
