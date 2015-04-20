@@ -37,12 +37,16 @@ public class HandleAdapter extends ArrayAdapter<String> {
     button.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        handles.removeHandle(handle);
-        tweets.removeTweetsByHandle(handle);
-        notifyDataSetChanged();
+        deleteButtonPressed(handle);
       }
     });
     handle_text.setText(handle);
     return convertView;
+  }
+
+  private void deleteButtonPressed(String handle){
+    handles.removeHandle(handle);
+    tweets.removeTweetsByHandle(handle);
+    notifyDataSetChanged();
   }
 }

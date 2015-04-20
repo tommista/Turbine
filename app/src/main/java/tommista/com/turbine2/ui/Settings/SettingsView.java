@@ -50,7 +50,7 @@ public class SettingsView extends LinearLayout {
     refreshButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        dataFuser.refresh();
+        refreshButtonPressed();
       }
     });
 
@@ -62,20 +62,7 @@ public class SettingsView extends LinearLayout {
     addButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        newHandleEditText = (EditText) findViewById(R.id.edit_text);
-        String name = newHandleEditText.getText().toString();
-        if (name.isEmpty()) {
-          return;
-        } else if (!name.startsWith("@")) {
-          name = "@" + name;
-        }
-
-        handles.addHandle(name);
-        dataFuser.getTweetsForHandle(name);
-        adapter.notifyDataSetChanged();
-        newHandleEditText.setText("");
-
-        hideInputMethod(v);
+        addButtonPressed(v);
       }
     });
     listView.setAdapter(adapter);
@@ -87,5 +74,26 @@ public class SettingsView extends LinearLayout {
     if (imm != null && view != null) {
       imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
+  }
+
+  private void refreshButtonPressed(){
+    dataFuser.refresh();
+  }
+
+  private void addButtonPressed(View v){
+    newHandleEditText = (EditText) findViewById(R.id.edit_text);
+    String name = newHandleEditText.getText().toString();
+    if (name.isEmpty()) {
+      return;
+    } else if (!name.startsWith("@")) {
+      name = "@" + name;
+    }
+
+    handles.addHandle(name);
+    dataFuser.getTweetsForHandle(name);
+    adapter.notifyDataSetChanged();
+    newHandleEditText.setText("");
+
+    hideInputMethod(v);
   }
 }

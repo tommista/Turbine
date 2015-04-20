@@ -62,7 +62,7 @@ public class TimelineView extends LinearLayout {
     settingsButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        ((Activity) context).setContentView(R.layout.settings_view);
+        settingsButtonPressed();
       }
     });
 
@@ -70,7 +70,11 @@ public class TimelineView extends LinearLayout {
     listView.setAdapter(tweetAdapter);
   }
 
-  private void receivedNewTweetIntent(Intent intent){
+  private void receivedNewTweetIntent(Intent intent) {
     tweetAdapter.notifyDataSetChanged();
+  }
+
+  private void settingsButtonPressed() {
+    ((Activity) context).setContentView(R.layout.settings_view);
   }
 }
