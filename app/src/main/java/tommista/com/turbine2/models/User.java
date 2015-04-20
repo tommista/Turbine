@@ -4,10 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class User {
 
-    @SerializedName("profile_image_url")
-    public String profileImageURL;
+  @SerializedName("profile_image_url")
+  public String profileImageURL;
 
-    @SerializedName("name")
-    public String name;
-
+  @SerializedName("name")
+  public String name;
 }

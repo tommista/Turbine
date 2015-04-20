@@ -6,6 +6,6 @@ import retrofit.http.Query;
 import tommista.com.turbine2.models.UnshortenResponse;
 
 public interface UnshortenService {
-    @GET("/")
-    void unshortenURL(@Query("shortURL") String shortURL, @Query("apiKey") String apiKey, @Query("responseFormat") String responseFormat, Callback<UnshortenResponse> callback);
+  @GET("/") void unshortenURL(@Query("shortURL") String shortURL, @Query("apiKey") String apiKey,
+      @Query("responseFormat") String responseFormat, Callback<UnshortenResponse> callback);
 }

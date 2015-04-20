@@ -4,6 +4,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class TweetUrls {
 
-    @SerializedName("expanded_url")
-    public String expandedUrl;
+  @SerializedName("expanded_url")
+  public String expandedUrl;
 }

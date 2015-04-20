@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Turbine</string>
-    <string name="action_settings">Settings</string>
-    <string name="action_refresh">Refresh</string>
-    <string name="twitter_handle">Twitter Handle</string>
-    <string name="add_button_text">Add</string>
-    <string name="delete_button_text">Delete</string>
-    <string name="saved_handles_list_key">savedHandlesList</string>
-    <string name="unshorten_api_endpoint">http://api.unshorten.it</string>
-    <string name="twitter_api_endpoint">https://api.twitter.com</string>
-    <string name="settings_button_text">\ue994</string>
-    <string name="refresh_button_text">\ue984</string>
+  <string name="app_name">Turbine</string>
+  <string name="action_settings">Settings</string>
+  <string name="action_refresh">Refresh</string>
+  <string name="twitter_handle">Twitter Handle</string>
+  <string name="add_button_text">Add</string>
+  <string name="delete_button_text">Delete</string>
+  <string name="saved_handles_list_key">savedHandlesList</string>
+  <string name="unshorten_api_endpoint">http://api.unshorten.it</string>
+  <string name="twitter_api_endpoint">https://api.twitter.com</string>
+  <string name="settings_button_text">\ue994</string>
+  <string name="refresh_button_text">\ue984</string>
 
-    <string name="tweets_changed_intent">tweets_changed_intent</string>
+  <string name="tweets_changed_intent">tweets_changed_intent</string>
 
 </resources>

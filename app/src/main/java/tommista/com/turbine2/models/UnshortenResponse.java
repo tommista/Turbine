@@ -4,6 +4,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class UnshortenResponse {
 
-    @SerializedName("fullurl")
-    public String fullUrl;
+  @SerializedName("fullurl")
+  public String fullUrl;
 }

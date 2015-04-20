@@ -4,7 +4,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class TweetEntities {
 
-    @SerializedName("urls")
-    public TweetUrls urlList[];
-
+  @SerializedName("urls")
+  public TweetUrls urlList[];
 }
