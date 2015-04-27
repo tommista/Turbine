@@ -42,7 +42,6 @@ public class Tweet implements Comparable<Tweet> {
 
   @Override
   public String toString() {
-    //return tweetEntities.urlList[0].expandedUrl;
     return createdAt;
   }
 

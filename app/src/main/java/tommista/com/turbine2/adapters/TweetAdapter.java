@@ -14,6 +14,8 @@ import tommista.com.turbine2.R;
 import tommista.com.turbine2.Tweets;
 import tommista.com.turbine2.models.Tweet;
 
+// ArrayAdapter that displays all of the tweets in the timeline.
+
 public class TweetAdapter extends ArrayAdapter<Tweet> {
 
   private Tweets tweets;

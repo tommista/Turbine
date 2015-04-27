@@ -11,6 +11,8 @@ import tommista.com.turbine2.Handles;
 import tommista.com.turbine2.R;
 import tommista.com.turbine2.Tweets;
 
+// ArrayAdapter that displays the list of all handles for a ListView
+
 public class HandleAdapter extends ArrayAdapter<String> {
 
   private Handles handles;

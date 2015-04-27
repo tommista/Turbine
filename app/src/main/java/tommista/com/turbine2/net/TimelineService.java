@@ -6,6 +6,8 @@ import retrofit.http.GET;
 import retrofit.http.Query;
 import tommista.com.turbine2.models.Tweet;
 
+// Retrofit interface for talking to the Twitter REST API
+
 public interface TimelineService {
 
   @GET("/1.1/statuses/user_timeline.json") void getUserTimeline(
