@@ -60,6 +60,8 @@ public class TurbineModule {
 
   @Provides @Singleton TimelineService providesTimelineService(final Application application) {
 
+    // Get your Twitter OAUTH token and then put it in the secrets.xml file under a string named twitter_token
+
     RequestInterceptor reqInterceptor = new RequestInterceptor() {
       @Override
       public void intercept(RequestFacade requestFacade) {

@@ -92,6 +92,10 @@ public class DataFuser {
   }
 
   private void unshortenURL(final String expandedURL, final String handle, final Tweet tweet) {
+
+    // Get your own unshorten.it API key from http://unshorten.it/api/register
+    // Put your unshorten.it API key in the secrets.xml file as a string titled unshorten_api_key
+
     unshortenService.unshortenURL(expandedURL,
         context.getResources().getString(R.string.unshorten_api_key), "json",
         new Callback<UnshortenResponse>() {
