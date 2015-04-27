@@ -31,8 +31,7 @@ import static android.content.Context.MODE_PRIVATE;
         TurbineApp.class, TurbineActivity.class, TimelineView.class, SettingsView.class
     },
     complete = false,
-    library = true
-)
+    library = true)
 
 public class TurbineModule {
   private final TurbineApp app;
